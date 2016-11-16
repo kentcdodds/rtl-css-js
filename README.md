@@ -22,11 +22,15 @@ RTL conversion for CSS in JS objects
 
 ## The problem
 
-TODO
+For some locales, it's necessary to change `padding-left` to `padding-right` when your text direction is right to left.
+There are tools like this for CSS ([`cssjanus`](https://github.com/cssjanus/cssjanus) for example) which manipulate
+strings of CSS to do this, but none for CSS in JS where your CSS is represented by an object.
 
 ## This solution
 
-TODO
+This is a function which accepts a CSS in JS object and can convert `padding-left` to `padding-right` as well as all
+other properties where it makes sense to do that (at least, that's what it's going to be when it's done... This is a
+work in progress).
 
 ## Installation
 
@@ -39,15 +43,34 @@ npm install --save rtl-css-js
 
 ## Usage
 
-TODO
+This module is exposed via [CommonJS](http://wiki.commonjs.org/wiki/CommonJS) as well as
+[UMD](https://github.com/umdjs/umd) with the global as `rtlCSSJS`
+
+CommonJS:
+
+```javascript
+const rtlCSSJS = require('rtl-css-js')
+const styles = rtlCSSJS({paddingLeft: 23})
+console.log(styles) // logs {paddingRight: 23}
+```
+
+You can also just include a script tag in your browser and use the `rtlCSSJS` variable:
+
+```html
+<script src="https://unpkg.com/rtl-css-js@1.0.0-beta.1"></script>
+<script>
+const styles = rtlCSSJS({paddingRight: 23})
+console.log(styles) // logs {paddingLeft: 23}
+</script>
+```
 
 ## Inspiration
 
-TODO
+[CSSJanus](https://github.com/cssjanus/cssjanus) was a major inspiration.
 
 ## Other Solutions
 
-TODO
+I'm not aware of any, if you are please [make a pull request](http://makeapullrequest.com) and add it here!
 
 ## Contributors
 

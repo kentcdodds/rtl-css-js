@@ -9,8 +9,20 @@ module.exports = {
       watch: 'jest --watch',
     },
     build: {
-      description: 'delete the dist directory and run babel to build the files',
-      script: 'rimraf dist && babel --copy-files --out-dir dist --ignore *.test.js src',
+      description: 'run all builds in parallel',
+      default: 'nps --parallel build.main,build.umd,build.umd.min',
+      main: {
+        description: 'delete the dist directory and run babel to build the files',
+        script: 'rimraf dist && babel --copy-files --out-dir dist --ignore *.test.js src',
+      },
+      umd: {
+        description: 'build',
+        default: 'webpack --output-filename index.umd.js',
+        min: {
+          description: 'create a umd build that is minified',
+          script: 'webpack --output-filename index.umd.min.js -p',
+        },
+      },
     },
     lint: {
       description: 'lint the entire project',
