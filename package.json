@@ -1,0 +1,71 @@
+{
+  "name": "rtl-css-js",
+  "version": "0.0.0-semantically-released",
+  "description": "RTL conversion for CSS in JS objects",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "package-scripts",
+    "test": "package-scripts test",
+    "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
+    "precommit": "opt --in pre-commit --exec \"npm start validate\""
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "all-contributors-cli": "^3.0.6",
+    "babel-cli": "^6.14.0",
+    "babel-jest": "^17.0.2",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-2": "^6.13.0",
+    "babel-register": "^6.14.0",
+    "codecov": "^1.0.1",
+    "commitizen": "^2.8.6",
+    "cz-conventional-changelog": "^1.2.0",
+    "eslint": "^3.4.0",
+    "eslint-config-kentcdodds": "^10.1.0",
+    "husky": "^0.11.7",
+    "jest-cli": "^17.0.2",
+    "opt-cli": "^1.5.1",
+    "p-s": "^2.4.3",
+    "rimraf": "^2.5.4",
+    "semantic-release": "^6.2.1",
+    "validate-commit-msg": "^2.8.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "kentcdodds",
+      "kentcdodds/jest"
+    ]
+  },
+  "jest": {
+    "cacheDirectory": "./node_modules/.cache",
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kentcdodds/rtl-css-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kentcdodds/rtl-css-js/issues"
+  },
+  "homepage": "https://github.com/kentcdodds/rtl-css-js#readme"
+}
