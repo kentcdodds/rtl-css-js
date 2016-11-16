@@ -5,14 +5,7 @@ import convert from './'
 // the objects each have an input (array that's spread on a call to convert) and an output which is the resulting object
 // if you want to run `.only` or `.skip` for one of the tests
 // specify `modifier: 'only'` or `modifier: 'skip'` 👍
-const tests = {
-  'leaves stuff alone it should not impact': {
-    input: [
-      {textAlign: 'center'},
-    ],
-    output: {textAlign: 'center'},
-  },
-}
+const tests = {}
 
 // we'll probably have a lot of these :)
 // the first item in each array is the input (an array which is spread on a call to convert)
@@ -28,6 +21,11 @@ const shortTestsTodo = [
   [[{direction: 'ltr'}], {direction: 'rtl'}],
 ]
 
+// put tests here where rtl-css-js should not change the input
+const unchanged = [
+  [{textAlign: 'center'}],
+]
+
 shortTests.forEach(shortTest => {
   const [input, output] = shortTest
   const title = `changes ${JSON.stringify(input[0])} to ${JSON.stringify(output)}`
@@ -38,6 +36,13 @@ shortTestsTodo.forEach(shortTest => {
   const [input, output] = shortTest
   const title = `changes ${JSON.stringify(input[0])} to ${JSON.stringify(output)}`
   tests[title] = {input, output, modifier: 'skip'}
+})
+
+unchanged.forEach(shortTest => {
+  const input = shortTest
+  const [output] = input
+  const title = `does not change ${JSON.stringify(output)}`
+  tests[title] = {input, output}
 })
 
 Object.keys(tests).forEach(title => {
