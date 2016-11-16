@@ -12,3 +12,4 @@
 ## Wont do
 
 - Encode specifics of certain frameworks into the tool itself.
+- Preserve formatting of strings (for example `  1px   2px     !important  ` will be reformatted to `1px 2px !important`, we don't care about losing the extra spaces)
