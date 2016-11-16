@@ -5,7 +5,12 @@ import convert from './'
 // the objects each have an input (array that's spread on a call to convert) and an output which is the resulting object
 // if you want to run `.only` or `.skip` for one of the tests
 // specify `modifier: 'only'` or `modifier: 'skip'` 👍
-const tests = {}
+const tests = {
+  'handles nested objects because many CSS in JS solutions allow for this': {
+    input: [{footer: {':hover': {paddingLeft: 23}}}],
+    output: {footer: {':hover': {paddingRight: 23}}},
+  },
+}
 
 // we'll probably have a lot of these :)
 // the first item in each array is the input (an array which is spread on a call to convert)
@@ -14,11 +19,8 @@ const tests = {}
 const shortTests = [
   [[{paddingLeft: 23}], {paddingRight: 23}],
   [[{paddingRight: 23}], {paddingLeft: 23}],
-]
-
-// put short tests that should be skipped here
-const shortTestsTodo = [
   [[{direction: 'ltr'}], {direction: 'rtl'}],
+  [[{direction: 'rtl'}], {direction: 'ltr'}],
   [[{left: 10}], {right: 10}],
   [[{left: '10px !important'}], {right: '10px !important'}],
   [[{left: '-1.5em'}], {right: '-1.5em'}],
@@ -32,15 +34,11 @@ const shortTestsTodo = [
   [[{padding: '1px 2px 3px 4px !important'}], {padding: '1px 4px 3px 2px !important'}],
   [[{padding: '1px 2px 3px 4px !important'}], {padding: '1px 4px 3px 2px !important'}],
   [[{padding: '1px 2px 3px 4px'}], {padding: '1px 4px 3px 2px'}],
-  [[{padding: '1px  2px   3px    4px'}], {padding: '1px  4px   3px    2px'}],
-  [[{direction: 'ltr'}], {direction: 'rtl'}],
-  [[{direction: 'rtl'}], {direction: 'ltr'}],
-  [[{direction: 'rtl'}], {direction: 'ltr'}],
-  [[{direction: 'rtl'}], {direction: 'ltr'}],
+  [[{padding: '1px  2px   3px    4px'}], {padding: '1px 4px 3px 2px'}],
+  [[{padding: '1px 2px 3px 4px'}], {padding: '1px 4px 3px 2px'}],
   [[{float: 'left'}], {float: 'right'}],
   [[{float: 'left !important'}], {float: 'right !important'}],
   [[{clear: 'left'}], {clear: 'right'}],
-  [[{padding: '1px 2px 3px 4px'}], {padding: '1px 4px 3px 2px'}],
   [[{paddingLeft: 0}], {paddingRight: 0}],
   [[{marginLeft: 0}], {marginRight: 0}],
   [[{cursor: 'w-resize'}], {cursor: 'e-resize'}],
@@ -48,13 +46,19 @@ const shortTestsTodo = [
   [[{cursor: 'nw-resize'}], {cursor: 'ne-resize'}],
   [[{textAlign: 'left'}], {textAlign: 'right'}],
   [[{textShadow: 'red 2px 0'}], {textShadow: 'red -2px 0'}],
+  [[{textShadow: 'red -2px 0'}], {textShadow: 'red 2px 0'}],
   [[{textShadow: '2px 0 red'}], {textShadow: '-2px 0 red'}],
+  [[{textShadow: '-2px 0 red'}], {textShadow: '2px 0 red'}],
+]
+
+// put short tests that should be skipped here
+const shortTestsTodo = [
   [[{boxShadow: '-6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}], {boxShadow: '6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
   [[{boxShadow: 'inset -6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}], {boxShadow: 'inset 6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
   [[{boxShadow: 'inset .5em 0 0 white'}], {boxShadow: 'inset -.5em 0 0 white'}],
   [[{boxShadow: 'inset 0.5em 0 0 white'}], {boxShadow: 'inset -0.5em 0 0 white'}],
-  [[{WebkitBoxShadow: '-1px 2px 3px 3px red'}], {WebkitBoxShadow: '1px 2px 3px 3px red'}],
-  [[{MozBoxShadow: '-1px 2px 3px 3px red'}], {MozBoxShadow: '1px 2px 3px 3px red'}],
+  [[{webkitBoxShadow: '-1px 2px 3px 3px red'}], {webkitBoxShadow: '1px 2px 3px 3px red'}],
+  [[{mozBoxShadow: '-1px 2px 3px 3px red'}], {mozBoxShadow: '1px 2px 3px 3px red'}],
   [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
   [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
   [[{borderLeft: 0}], {borderRight: 0}],
