@@ -23,10 +23,21 @@ const shortTests = [
   [[{paddingRight: 23}], {paddingLeft: 23}],
 ]
 
+// put short tests that should be skipped here
+const shortTestsTodo = [
+  [[{direction: 'ltr'}], {direction: 'rtl'}],
+]
+
 shortTests.forEach(shortTest => {
   const [input, output] = shortTest
   const title = `changes ${JSON.stringify(input[0])} to ${JSON.stringify(output)}`
   tests[title] = {input, output}
+})
+
+shortTestsTodo.forEach(shortTest => {
+  const [input, output] = shortTest
+  const title = `changes ${JSON.stringify(input[0])} to ${JSON.stringify(output)}`
+  tests[title] = {input, output, modifier: 'skip'}
 })
 
 Object.keys(tests).forEach(title => {
