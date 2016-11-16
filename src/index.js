@@ -1,3 +1,10 @@
+const propertiesToConvert = {
+  paddingLeft: 'paddingRight',
+  paddingRight: 'paddingLeft',
+  marginLeft: 'marginRight',
+  marginRight: 'marginLeft',
+}
+
 export default convert
 
 function convert(object) {
@@ -8,15 +15,11 @@ function convert(object) {
   }, {})
 }
 
-function convertProperty(key, value) {
-  if (endsWith(key, 'Left')) {
-    return {key: key.replace('Left', 'Right'), value}
-  } else if (endsWith(key, 'Right')) {
-    return {key: key.replace('Right', 'Left'), value}
-  }
+function convertProperty(originalKey, value) {
+  const key = getPropertyDoppelganger(originalKey)
   return {key, value}
 }
 
-function endsWith(str, suffix) {
-  return str.indexOf(suffix, str.length - suffix.length) !== -1
+function getPropertyDoppelganger(property) {
+  return propertiesToConvert[property] || property
 }
