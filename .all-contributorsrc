@@ -14,7 +14,8 @@
       "profile": "https://kentcdodds.com",
       "contributions": [
         "code",
-        "test"
+        "test",
+        "infra"
       ]
     }
   ]

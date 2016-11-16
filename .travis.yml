@@ -15,7 +15,8 @@ script:
   - npm start validate
 after_success:
   - npm start report-coverage
-  - npm start release
+  - echo "not ready to release stuff automatically yet"
+  # - npm start release
 branches:
   only:
     - master
