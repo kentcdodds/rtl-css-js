@@ -62,12 +62,34 @@ const propertyValueConverters = {
         return value
     }
   },
+  backgroundImage(value) {
+    // sorry for the regex 😞, but basically this replaces _every_ instance of `ltr`, `rtl`, `right`, and `left` with
+    // the corresponding opposite. A situation we're accepting here:
+    // url('/left/right/rtl/ltr.png') will be changed to url('/right/left/ltr/rtl.png')
+    // Definite trade-offs here, but I think it's a good call.
+    return value.replace(/(^|\W|_)((ltr)|(rtl)|(left)|(right))(\W|_|$)/g, (match, g1, group2) => {
+      return match.replace(group2, valuesToConvert[group2])
+    })
+  },
+  backgroundPosition(value) {
+    return value
+      // intentionally only grabbing the first instance of this because that represents `left`
+      .replace(/^((-|\d|\.)+%)/, (match, group) => calculateNewBackgroundPosition(group))
+      .replace(/(left)|(right)/, match => valuesToConvert[match])
+  },
+  backgroundPositionX(value) {
+    if (isNumber(value)) {
+      return value
+    }
+    return propertyValueConverters.backgroundPosition(value)
+  },
 }
 propertyValueConverters.borderWidth = propertyValueConverters.padding
 propertyValueConverters.boxShadow = propertyValueConverters.textShadow
 propertyValueConverters.webkitBoxShadow = propertyValueConverters.textShadow
 propertyValueConverters.mozBoxShadow = propertyValueConverters.textShadow
 propertyValueConverters.borderStyle = propertyValueConverters.borderColor
+propertyValueConverters.background = propertyValueConverters.backgroundImage
 
 // here's our main export! 👋
 export default convert
@@ -173,6 +195,19 @@ function handleQuartetValues(value) {
   }
   const [top, right, bottom, left] = splitValues
   return [top, left, bottom, right].join(' ')
+}
+
+function calculateNewBackgroundPosition(value) {
+  const idx = value.indexOf('.')
+  if (idx === -1) {
+    value = `${100 - parseFloat(value)}%`
+  } else {
+    // Two off, one for the "%" at the end, one for the dot itself
+    const len = value.length - idx - 2
+    value = 100 - parseFloat(value)
+    value = `${value.toFixed(len)}%`
+  }
+  return value
 }
 
 /**
