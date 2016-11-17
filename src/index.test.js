@@ -49,18 +49,18 @@ const shortTests = [
   [[{textShadow: 'red -2px 0'}], {textShadow: 'red 2px 0'}],
   [[{textShadow: '2px 0 red'}], {textShadow: '-2px 0 red'}],
   [[{textShadow: '-2px 0 red'}], {textShadow: '2px 0 red'}],
-]
-
-// put short tests that should be skipped here
-const shortTestsTodo = [
   [[{boxShadow: '-6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}], {boxShadow: '6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
   [[{boxShadow: 'inset -6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}], {boxShadow: 'inset 6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
   [[{boxShadow: 'inset .5em 0 0 white'}], {boxShadow: 'inset -.5em 0 0 white'}],
   [[{boxShadow: 'inset 0.5em 0 0 white'}], {boxShadow: 'inset -0.5em 0 0 white'}],
+  [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
+  [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
   [[{webkitBoxShadow: '-1px 2px 3px 3px red'}], {webkitBoxShadow: '1px 2px 3px 3px red'}],
   [[{mozBoxShadow: '-1px 2px 3px 3px red'}], {mozBoxShadow: '1px 2px 3px 3px red'}],
-  [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
-  [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
+]
+
+// put short tests that should be skipped here
+const shortTestsTodo = [
   [[{borderLeft: 0}], {borderRight: 0}],
   [[{borderLeft: '1px solid red'}], {borderRight: '1px solid red'}],
   [[{borderLeftColor: 'red'}], {borderRightColor: 'red'}],
@@ -111,7 +111,6 @@ const shortTestsTodo = [
   [[{background: "url('http"}], {background: "url('http"}],
   [[{background: 'url(/foo/bar.right.png)'}], {background: 'url(/foo/bar.left.png)'}],
   [[{background: 'url(/foo/bar-ltr.png)'}], {background: 'url(/foo/bar-rtl.png)'}],
-  [[{float: 'left'}], {float: 'right'}],
   [[{padding: '1px 2px 3px 4px !important', color: 'red'}], {padding: '1px 4px 3px 2px !important', color: 'red'}],
   [[{padding: 10, direction: 'rtl'}], {padding: 10, direction: 'ltr'}],
   [[{background: 'url(/foo/bar-rtl.png)', right: 10}], {background: 'url(/foo/bar-rtl.png)', left: 10}],
