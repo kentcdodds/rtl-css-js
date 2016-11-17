@@ -160,8 +160,17 @@ function getValueDoppelganger(key, originalValue) {
   return newValue
 }
 
+/**
+ * This takes a list of CSS values and converts it to an array
+ * @param {String} value - something like `1px`, `1px 2em`, or `3pt rgb(150, 230, 550) 40px calc(100% - 5px)`
+ * @return {Array} the split values (for example: `['3pt', 'rgb(150, 230, 550)', '40px', 'calc(100% - 5px)']`)
+ */
 function getValuesAsList(value) {
-  return cleanValueList(value)
+  return value
+    .replace(/ +/g, ' ') // remove all extraneous spaces
+    .split(' ')
+    .map(i => i.trim()) // get rid of extra space before/after each item
+    .filter(Boolean) // get rid of empty strings
      // join items which are within parenthese
      // luckily `calc (100% - 5px)` is invalid syntax and it must be `calc(100% - 5px)`, otherwise this would be even more complex
     .reduce(({list, state}, item) => {
@@ -180,14 +189,12 @@ function getValuesAsList(value) {
     }, {list: [], state: {withinParens: false}}).list
 }
 
-function cleanValueList(value) {
-  return value
-    .replace(/ +/g, ' ') // remove all extraneous spaces
-    .split(' ')
-    .map(i => i.trim()) // get rid of extra space before/after each item
-    .filter(Boolean) // get rid of empty strings
-}
-
+/**
+ * This is intended for properties that are `top right bottom left` and will switch them to `top left bottom right`
+ * @param {String} value - `1px 2px 3px 4px` for example, but also handles cases where there are too few/too many and
+ * simply returns the value in those cases
+ * @return {String} the result - `1px 4px 3px 2px` for example.
+ */
 function handleQuartetValues(value) {
   const splitValues = getValuesAsList(value)
   if (splitValues.length <= 3 || splitValues.length > 4) {
@@ -197,6 +204,11 @@ function handleQuartetValues(value) {
   return [top, left, bottom, right].join(' ')
 }
 
+/**
+ * Takes a percentage for background position and inverts it.
+ * @param {String} value - the original value (for example 77%)
+ * @return {String} the result (for example 23%)
+ */
 function calculateNewBackgroundPosition(value) {
   const idx = value.indexOf('.')
   if (idx === -1) {
