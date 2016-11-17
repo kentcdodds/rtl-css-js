@@ -21,14 +21,11 @@ const propertyValueConverters = {
       return value
     }
     const splitValues = value.replace(/ +/g, ' ').split(' ')
-    if (splitValues.length <= 3) {
+    if (splitValues.length <= 3 || splitValues.length > 4) {
       return value
     }
-    const [top, right, bottom, left, important] = splitValues
-    if (important && important !== '!important') {
-      return value // the value is invalid and we can't do anything about that...
-    }
-    return [top, left, bottom, right, important].filter(Boolean).join(' ')
+    const [top, right, bottom, left] = splitValues
+    return [top, left, bottom, right].filter(Boolean).join(' ')
   },
   textShadow(value) {
     // intentionally leaving off the `g` flag here because we only want to change the first number (which is the offset-x)
