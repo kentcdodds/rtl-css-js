@@ -67,6 +67,15 @@ console.log(styles) // logs {paddingLeft: 23}
 </script>
 ```
 
+## Caveats
+
+### `background`
+
+Right now `background` and `backgroundImage` just replace all instances of `ltr` with `rtl` and `right` with `left`.
+This is so you can have a different image for your LTR and RTL. Note that this is case sensitive! Must be lower case.
+Note also that it *will not* change `bright` to `bleft`. It's a _little_ smarter than that. But this is definitely
+something to consider with your URLs.
+
 ## Inspiration
 
 [CSSJanus](https://github.com/cssjanus/cssjanus) was a major inspiration.
