@@ -57,10 +57,6 @@ const shortTests = [
   [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
   [[{webkitBoxShadow: '-1px 2px 3px 3px red'}], {webkitBoxShadow: '1px 2px 3px 3px red'}],
   [[{mozBoxShadow: '-1px 2px 3px 3px red'}], {mozBoxShadow: '1px 2px 3px 3px red'}],
-]
-
-// put short tests that should be skipped here
-const shortTestsTodo = [
   [[{borderLeft: 0}], {borderRight: 0}],
   [[{borderLeft: '1px solid red'}], {borderRight: '1px solid red'}],
   [[{borderLeftColor: 'red'}], {borderRightColor: 'red'}],
@@ -70,15 +66,19 @@ const shortTestsTodo = [
   [[{borderColor: 'red #f00 hsl(0, 100%, 50%) hsla(0, 100%, 50%, 0.5)'}], {borderColor: 'red hsla(0, 100%, 50%, 0.5) hsl(0, 100%, 50%) #f00'}],
   [[{borderWidth: '1px 2px 3px 4px'}], {borderWidth: '1px 4px 3px 2px'}],
   [[{borderStyle: 'none dotted dashed solid'}], {borderStyle: 'none solid dashed dotted'}],
+  [[{borderTopLeftRadius: 0}], {borderTopRightRadius: 0}],
+  [[{borderBottomLeftRadius: 0}], {borderBottomRightRadius: 0}],
   [[{borderRadius: '1px 2px'}], {borderRadius: '2px 1px'}],
   [[{borderRadius: '1px 2px 3px 4px'}], {borderRadius: '2px 1px 4px 3px'}],
   [[{borderRadius: '1px 2px 3px 4px'}], {borderRadius: '2px 1px 4px 3px'}],
   [[{borderRadius: '15px / 0 20px'}], {borderRadius: '15px / 20px 0'}],
   [[{borderRadius: '1px 2px 3px 4px / 5px 6px 7px 8px'}], {borderRadius: '2px 1px 4px 3px / 6px 5px 8px 7px'}],
-  [[{borderRadius: '1px 2px 3px 4px  !important'}], {borderRadius: '2px 1px 4px 3px  !important'}],
+  [[{borderRadius: '1px 2px 3px 4px !important'}], {borderRadius: '2px 1px 4px 3px !important'}],
   [[{borderRadius: '1px 2px 3px 4px'}], {borderRadius: '2px 1px 4px 3px'}],
-  [[{borderTopLeftRadius: 0}], {borderTopRightRadius: 0}],
-  [[{borderBottomLeftRadius: 0}], {borderBottomRightRadius: 0}],
+]
+
+// put short tests that should be skipped here
+const shortTestsTodo = [
   [[{backgroundPosition: 'left top'}], {backgroundPosition: 'right top'}],
   [[{background: 'url(/foo/bar.png) left top'}], {background: 'url(/foo/bar.png) right top'}],
   [[{background: 'url(/foo/bar.png) no-repeat left top'}], {background: 'url(/foo/bar.png) no-repeat right top'}],

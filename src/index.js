@@ -3,6 +3,11 @@ const propertiesToConvert = arrayToObject([
   ['paddingLeft', 'paddingRight'],
   ['marginLeft', 'marginRight'],
   ['left', 'right'],
+  ['borderLeft', 'borderRight'],
+  ['borderLeftColor', 'borderRightColor'],
+  ['borderLeftStyle', 'borderRightStyle'],
+  ['borderTopLeftRadius', 'borderTopRightRadius'],
+  ['borderBottomLeftRadius', 'borderBottomRightRadius'],
 ])
 
 // this is the same as the propertiesToConvert except for values
@@ -20,12 +25,7 @@ const propertyValueConverters = {
     if (isNumber(value)) {
       return value
     }
-    const splitValues = value.replace(/ +/g, ' ').split(' ')
-    if (splitValues.length <= 3 || splitValues.length > 4) {
-      return value
-    }
-    const [top, right, bottom, left] = splitValues
-    return [top, left, bottom, right].filter(Boolean).join(' ')
+    return handleQuartetValues(value)
   },
   textShadow(value) {
     // intentionally leaving off the `g` flag here because we only want to change the first number (which is the offset-x)
@@ -37,10 +37,37 @@ const propertyValueConverters = {
       return `${doubleNegative}${number}`
     })
   },
+  borderColor(value) {
+    return handleQuartetValues(value)
+  },
+  borderRadius(value) {
+    if (isNumber(value)) {
+      return value
+    }
+    if (includes(value, '/')) {
+      const [radius1, radius2] = value.split('/')
+      const convertedRadius1 = propertyValueConverters.borderRadius(radius1.trim())
+      const convertedRadius2 = propertyValueConverters.borderRadius(radius2.trim())
+      return `${convertedRadius1} / ${convertedRadius2}`
+    }
+    const splitValues = getValuesAsList(value)
+    switch (splitValues.length) {
+      case 2:
+        return splitValues.reverse().join(' ')
+      case 4: // eslint-disable-line no-case-declarations
+        // feel free to refactor 😈
+        const [topLeft, topRight, bottomRight, bottomLeft] = splitValues
+        return [topRight, topLeft, bottomLeft, bottomRight].join(' ')
+      default:
+        return value
+    }
+  },
 }
+propertyValueConverters.borderWidth = propertyValueConverters.padding
 propertyValueConverters.boxShadow = propertyValueConverters.textShadow
 propertyValueConverters.webkitBoxShadow = propertyValueConverters.textShadow
 propertyValueConverters.mozBoxShadow = propertyValueConverters.textShadow
+propertyValueConverters.borderStyle = propertyValueConverters.borderColor
 
 // here's our main export! 👋
 export default convert
@@ -52,6 +79,11 @@ export default convert
  */
 function convert(object) {
   return Object.keys(object).reduce((newObj, originalKey) => {
+    let originalValue = object[originalKey]
+    if (isString(originalValue)) {
+      // you're welcome to later code 😺
+      originalValue = originalValue.trim()
+    }
     const {key, value} = convertProperty(originalKey, object[originalKey])
     newObj[key] = value
     return newObj
@@ -106,6 +138,43 @@ function getValueDoppelganger(key, originalValue) {
   return newValue
 }
 
+function getValuesAsList(value) {
+  return cleanValueList(value)
+     // join items which are within parenthese
+     // luckily `calc (100% - 5px)` is invalid syntax and it must be `calc(100% - 5px)`, otherwise this would be even more complex
+    .reduce(({list, state}, item) => {
+      if (includes(item, '(')) {
+        state.withinParens = true
+        list.push(item)
+      } else if (state.withinParens) {
+        if (includes(item, ')')) {
+          state.withinParens = false
+        }
+        list[list.length - 1] = `${list[list.length - 1]} ${item}`
+      } else {
+        list.push(item)
+      }
+      return {list, state}
+    }, {list: [], state: {withinParens: false}}).list
+}
+
+function cleanValueList(value) {
+  return value
+    .replace(/ +/g, ' ') // remove all extraneous spaces
+    .split(' ')
+    .map(i => i.trim()) // get rid of extra space before/after each item
+    .filter(Boolean) // get rid of empty strings
+}
+
+function handleQuartetValues(value) {
+  const splitValues = getValuesAsList(value)
+  if (splitValues.length <= 3 || splitValues.length > 4) {
+    return value
+  }
+  const [top, right, bottom, left] = splitValues
+  return [top, left, bottom, right].join(' ')
+}
+
 /**
  * Takes an array of [keyValue1, keyValue2] pairs and creates an object of {keyValue1: keyValue2, keyValue2: keyValue1}
  * @param {Array} array the array of pairs
@@ -125,4 +194,12 @@ function isNumber(val) {
 
 function isObject(val) {
   return typeof val === 'object'
+}
+
+function isString(val) {
+  return typeof val === 'string'
+}
+
+function includes(inclusive, inclusee) {
+  return inclusive.indexOf(inclusee) !== -1
 }
