@@ -29,7 +29,7 @@ const propertyValueConverters = {
   },
   textShadow(value) {
     // intentionally leaving off the `g` flag here because we only want to change the first number (which is the offset-x)
-    return value.replace(/(-*)(\d+)/, (match, negative, number) => {
+    return value.replace(/(-*)([.|\d]+)/, (match, negative, number) => {
       if (number === '0') {
         return match
       }
@@ -38,6 +38,9 @@ const propertyValueConverters = {
     })
   },
 }
+propertyValueConverters.boxShadow = propertyValueConverters.textShadow
+propertyValueConverters.webkitBoxShadow = propertyValueConverters.textShadow
+propertyValueConverters.mozBoxShadow = propertyValueConverters.textShadow
 
 // here's our main export! 👋
 export default convert
