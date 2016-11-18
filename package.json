@@ -4,8 +4,8 @@
   "description": "RTL conversion for CSS in JS objects",
   "main": "dist/index.js",
   "scripts": {
-    "start": "package-scripts",
-    "test": "package-scripts test",
+    "start": "nps",
+    "test": "nps test",
     "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
     "precommit": "opt --in pre-commit --exec \"npm start validate\""
   },
@@ -19,6 +19,7 @@
   "devDependencies": {
     "all-contributors-cli": "^3.0.6",
     "babel-cli": "^6.14.0",
+    "babel-core": "^6.18.2",
     "babel-jest": "^17.0.2",
     "babel-loader": "^6.2.7",
     "babel-polyfill": "^6.13.0",
@@ -28,12 +29,12 @@
     "codecov": "^1.0.1",
     "commitizen": "^2.8.6",
     "cz-conventional-changelog": "^1.2.0",
-    "eslint": "^3.4.0",
-    "eslint-config-kentcdodds": "^10.1.0",
+    "eslint": "^3.10.2",
+    "eslint-config-kentcdodds": "^11.0.0",
     "husky": "^0.11.7",
     "jest-cli": "^17.0.2",
     "opt-cli": "^1.5.1",
-    "p-s": "^2.4.3",
+    "p-s": "^3.0.3",
     "rimraf": "^2.5.4",
     "semantic-release": "^6.2.1",
     "validate-commit-msg": "^2.8.0",
@@ -46,7 +47,6 @@
     ]
   },
   "jest": {
-    "cacheDirectory": "./node_modules/.cache",
     "testEnvironment": "node",
     "coverageThreshold": {
       "global": {
