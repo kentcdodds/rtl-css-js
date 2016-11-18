@@ -2,9 +2,6 @@
 
 RTL conversion for CSS in JS objects
 
-**WIP:** This is a work in progress! Want to help out? Start [here](https://github.com/kentcdodds/rtl-css-js/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
-and checkout [this](https://github.com/kentcdodds/rtl-css-js/blob/master/CONTRIBUTING.md)
-
 [![Build Status][build-badge]][build]
 [![Code Coverage][coverage-badge]][coverage]
 [![Dependencies][dependencyci-badge]][dependencyci]
