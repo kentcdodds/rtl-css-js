@@ -1,6 +1,6 @@
 {
   "name": "rtl-css-js",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "RTL conversion for CSS in JS objects",
   "main": "dist/index.js",
   "scripts": {
