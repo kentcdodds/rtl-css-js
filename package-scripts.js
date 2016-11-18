@@ -13,7 +13,7 @@ module.exports = {
       default: 'nps --parallel build.main,build.umd,build.umd.min',
       main: {
         description: 'delete the dist directory and run babel to build the files',
-        script: 'rimraf dist && babel --copy-files --out-dir dist --ignore *.test.js src',
+        script: 'rimraf dist && babel --copy-files --out-dir dist --ignore *.test.js --ignore webpack-entry.js src',
       },
       umd: {
         description: 'build',

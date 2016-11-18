@@ -3,7 +3,7 @@ const {join} = require('path')
 const include = join(__dirname, 'src')
 
 module.exports = {
-  entry: './src/index',
+  entry: './src/webpack-entry',
   output: {
     path: join(__dirname, 'dist'),
     libraryTarget: 'umd',
