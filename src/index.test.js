@@ -93,6 +93,7 @@ const shortTests = [
   [[{borderRadius: '1px 2px 3px 4px / 5px 6px 7px 8px'}], {borderRadius: '2px 1px 4px 3px / 6px 5px 8px 7px'}],
   [[{borderRadius: '1px 2px 3px 4px !important'}], {borderRadius: '2px 1px 4px 3px !important'}],
   [[{borderRadius: '1px 2px 3px 4px'}], {borderRadius: '2px 1px 4px 3px'}],
+  [[{borderRadius: '1px 2px 3px calc(calc(2*2) * 3px)'}], {borderRadius: '2px 1px calc(calc(2*2) * 3px) 3px'}],
   [[{background: 'url(/foo/bar.png) left top'}], {background: 'url(/foo/bar.png) right top'}],
   [[{background: 'url(/foo/bar.png) no-repeat left top'}], {background: 'url(/foo/bar.png) no-repeat right top'}],
   [[{background: '#000 url(/foo/bar.png) no-repeat left top'}], {background: '#000 url(/foo/bar.png) no-repeat right top'}],
@@ -111,19 +112,16 @@ const shortTests = [
   [[{backgroundPosition: '0% 100%'}], {backgroundPosition: '100% 100%'}],
   [[{backgroundPositionX: '77%'}], {backgroundPositionX: '23%'}],
   [[{backgroundPositionX: '77% !important'}], {backgroundPositionX: '23% !important'}],
+  [[{background: 'url(/foo/bar.png) 77% 40%'}], {background: 'url(/foo/bar.png) 23% 40%'}],
+  [[{background: 'url(/foo/bar.png) 77%'}], {background: 'url(/foo/bar.png) 23%'}],
+  [[{background: 'url(/foo/bar.png) no-repeat 77% 40%'}], {background: 'url(/foo/bar.png) no-repeat 23% 40%'}],
+  [[{background: '#000 url(/foo/bar.png) no-repeat 77% 40%'}], {background: '#000 url(/foo/bar.png) no-repeat 23% 40%'}],
+  [[{background: 'url(/foo/bar.png) 77% 40% !important'}], {background: 'url(/foo/bar.png) 23% 40% !important'}],
 ]
 
 // put short tests that should be skipped here
 // you can specify a modifier as a third item in the array
 const shortTestsTodo = [
-  [[{background: 'url(/foo/bar.png) 77% 40%'}], {background: 'url(/foo/bar.png) 23% 40%'}],
-  [[{background: 'url(/foo/bar.png) 77%'}], {background: 'url(/foo/bar.png) 23%'}],
-  [[{background: 'url(/foo/bar.png) no-repeat 77% 40%'}], {background: 'url(/foo/bar.png) no-repeat 23% 40%'}],
-  [[{background: '#000 url(/foo/bar.png) no-repeat 77% 40%'}], {background: '#000 url(/foo/bar.png) no-repeat 23% 40%'}],
-  [[{background: '#000 url(/foo/bar.png) no-repeat 77% 40%'}], {background: '#000 url(/foo/bar.png) no-repeat 23% 40%'}],
-  [[{background: 'url(/foo/bar.png) 77% 40% !important'}], {background: 'url(/foo/bar.png) 23% 40% !important'}],
-  [[{background: 'url(/foo/bar.png) 77% 40%'}], {background: 'url(/foo/bar.png) 23% 40%'}],
-  [[{background: 'url(/foo/bar.png) 77% 40%'}], {background: 'url(/foo/bar.png) 23% 40%'}],
 ]
 
 // put tests here where rtl-css-js should not change the input
@@ -153,6 +151,7 @@ const unchanged = [
   [{backgroundPositionX: '10px'}],
   [{backgroundPositionX: 10}],
   [{backgroundPositionY: '40%'}],
+  [{backgroundImage: 'linear-gradient(#eb01a5, #d13531)'}],
   [{background: 'url(/foo/bright.png)'}],
   [{background: 'url(/foo/leftovers.png)'}],
   [{background: 'url("http'}],

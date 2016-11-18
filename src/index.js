@@ -52,17 +52,34 @@ const propertyValueConverters = {
     }
     const splitValues = getValuesAsList(value)
     switch (splitValues.length) {
-      case 2:
+      case 2: {
         return splitValues.reverse().join(' ')
-      case 4: // eslint-disable-line no-case-declarations
-        // feel free to refactor 😈
+      }
+      case 4: {
         const [topLeft, topRight, bottomRight, bottomLeft] = splitValues
         return [topRight, topLeft, bottomLeft, bottomRight].join(' ')
-      default:
+      }
+      default: {
         return value
+      }
     }
   },
+  background(value) {
+    // Yeah, this is in need of a refactor 🙃...
+    // but this property is a tough cookie 🍪
+    // get the backgroundPosition out of the string by removing everything that couldn't be the backgroundPosition value
+    const backgroundPositionValue = value
+      .replace(/(url\(.*?\))|(rgba?\(.*?\))|(hsl\(.*?\))|(#[a-fA-F0-9]+)|((^| )(\D)+( |$))/g, '').trim()
+    // replace that backgroundPosition value with the converted version
+    value = value
+      .replace(backgroundPositionValue, propertyValueConverters.backgroundPosition(backgroundPositionValue))
+    // do the backgroundImage value replacing on the whole value (because why not?)
+    return propertyValueConverters.backgroundImage(value)
+  },
   backgroundImage(value) {
+    if (!includes(value, 'url(')) {
+      return value
+    }
     // sorry for the regex 😞, but basically this replaces _every_ instance of `ltr`, `rtl`, `right`, and `left` with
     // the corresponding opposite. A situation we're accepting here:
     // url('/left/right/rtl/ltr.png') will be changed to url('/right/left/ltr/rtl.png')
@@ -89,7 +106,6 @@ propertyValueConverters.boxShadow = propertyValueConverters.textShadow
 propertyValueConverters.webkitBoxShadow = propertyValueConverters.textShadow
 propertyValueConverters.mozBoxShadow = propertyValueConverters.textShadow
 propertyValueConverters.borderStyle = propertyValueConverters.borderColor
-propertyValueConverters.background = propertyValueConverters.backgroundImage
 
 // here's our main export! 👋
 export default convert
@@ -174,25 +190,22 @@ function getValuesAsList(value) {
      // join items which are within parenthese
      // luckily `calc (100% - 5px)` is invalid syntax and it must be `calc(100% - 5px)`, otherwise this would be even more complex
     .reduce(({list, state}, item) => {
-      if (includes(item, '(')) {
-        state.withinParens = true
-        list.push(item)
-      } else if (state.withinParens) {
-        if (includes(item, ')')) {
-          state.withinParens = false
-        }
+      const openParansCount = (item.match(/\(/g) || []).length
+      const closedParansCount = (item.match(/\)/g) || []).length
+      if (state.parensDepth > 0) {
         list[list.length - 1] = `${list[list.length - 1]} ${item}`
       } else {
         list.push(item)
       }
+      state.parensDepth += openParansCount - closedParansCount
       return {list, state}
-    }, {list: [], state: {withinParens: false}}).list
+    }, {list: [], state: {parensDepth: 0}}).list
 }
 
 /**
  * This is intended for properties that are `top right bottom left` and will switch them to `top left bottom right`
  * @param {String} value - `1px 2px 3px 4px` for example, but also handles cases where there are too few/too many and
- * simply returns the value in those cases
+ * simply returns the value in those cases (which is the correct behavior)
  * @return {String} the result - `1px 4px 3px 2px` for example.
  */
 function handleQuartetValues(value) {
@@ -206,6 +219,8 @@ function handleQuartetValues(value) {
 
 /**
  * Takes a percentage for background position and inverts it.
+ * This was copied and modified from CSSJanus:
+ * https://github.com/cssjanus/cssjanus/blob/4245f834365f6cfb0239191a151432fb85abab23/src/cssjanus.js#L152-L175
  * @param {String} value - the original value (for example 77%)
  * @return {String} the result (for example 23%)
  */

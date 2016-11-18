@@ -3,7 +3,7 @@
 ## Want to do
 
 - Cover all cases where it makes sense to convert an object from LTR to RTL or vice versa
-- Handle traversal of objects (this is a really common CSS in JS pattern)
+- Support multiple values for some properties (as in those separated by a comma)
 
 ## Might do
 
