@@ -163,6 +163,10 @@ const unchanged = [
   [{rightxx: 10}],
   [{backgroundImage: 'mozLinearGradient(#326cc1, #234e8c)'}],
   [{backgroundImage: 'webkitGradient(linear, 100% 0%, 0% 0%, from(#666666), to(#ffffff))'}],
+  [{background: '#000 url(/foo/bar.png) no-repeat 77% 40% /* @noflip */'}],
+  [{padding: '1px 2px 3px 4px !important /* @noflip */'}],
+  [{float: 'left /* @noflip */'}],
+  [{borderColor: 'red #f00 hsl(0, 100%, 50%) hsla(0, 100%, 50%, 0.5) /* @noflip */'}],
 ]
 
 shortTests.forEach(shortTest => {
@@ -196,7 +200,7 @@ Object.keys(tests)
     } else {
       test(title, testFn)
     }
-    
+
     function testFn() {
       expect(convert(...input)).toEqual(output)
     }
