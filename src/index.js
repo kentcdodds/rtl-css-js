@@ -135,8 +135,9 @@ function convert(object) {
  * @return {Object} the new {key, value} pair
  */
 function convertProperty(originalKey, originalValue) {
-  const key = getPropertyDoppelganger(originalKey)
-  const value = getValueDoppelganger(key, originalValue)
+  const isNoFlip = /\/\*\s?@noflip\s?\*\//.test(originalValue)
+  const key = isNoFlip ? originalKey : getPropertyDoppelganger(originalKey)
+  const value = isNoFlip ? originalValue : getValueDoppelganger(key, originalValue)
   return {key, value}
 }
 
