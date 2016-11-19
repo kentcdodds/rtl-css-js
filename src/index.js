@@ -122,7 +122,7 @@ function convert(object) {
       // you're welcome to later code 😺
       originalValue = originalValue.trim()
     }
-    const {key, value} = convertProperty(originalKey, object[originalKey])
+    const {key, value} = convertProperty(originalKey, originalValue)
     newObj[key] = value
     return newObj
   }, {})
