@@ -17,6 +17,17 @@
         "test",
         "infra"
       ]
+    },
+    {
+      "login": "ahmedelgabri",
+      "name": "Ahmed El Gabri",
+      "avatar_url": "https://avatars.githubusercontent.com/u/63876?v=3",
+      "profile": "https://gabri.me",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ]
 }

@@ -9,7 +9,7 @@ RTL conversion for CSS in JS objects
 [![downloads][downloads-badge]][npm-stat]
 [![MIT License][license-badge]][LICENSE]
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Donate][donate-badge]][donate]
 [![Code of Conduct][coc-badge]][coc]
@@ -64,6 +64,14 @@ console.log(styles) // logs {paddingLeft: 23}
 </script>
 ```
 
+You can also control which rules you don't want to flip by adding a `/* @noflip */` CSS comment to your rule
+
+```javascript
+const rtlCSSJS = require('rtl-css-js')
+const styles = rtlCSSJS({paddingLeft: '20px /* @noflip */'})
+console.log(styles) // logs {paddingLeft: '20px /* @noflip */' }
+```
+
 ## Caveats
 
 ### `background`
@@ -86,8 +94,8 @@ I'm not aware of any, if you are please [make a pull request](http://makeapullre
 Thanks goes to these people ([emoji key][emojis]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds) [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds) 🚇 |
-| :---: |
+| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds) [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds) 🚇 | [<img src="https://avatars.githubusercontent.com/u/63876?v=3" width="100px;"/><br /><sub>Ahmed El Gabri</sub>](https://gabri.me)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri) [📖](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri) [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri) |
+| :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification. Contributions of any kind welcome!

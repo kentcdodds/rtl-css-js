@@ -122,7 +122,7 @@ function convert(object) {
       // you're welcome to later code 😺
       originalValue = originalValue.trim()
     }
-    const {key, value} = convertProperty(originalKey, object[originalKey])
+    const {key, value} = convertProperty(originalKey, originalValue)
     newObj[key] = value
     return newObj
   }, {})
@@ -135,8 +135,9 @@ function convert(object) {
  * @return {Object} the new {key, value} pair
  */
 function convertProperty(originalKey, originalValue) {
-  const key = getPropertyDoppelganger(originalKey)
-  const value = getValueDoppelganger(key, originalValue)
+  const isNoFlip = /\/\*\s?@noflip\s?\*\//.test(originalValue)
+  const key = isNoFlip ? originalKey : getPropertyDoppelganger(originalKey)
+  const value = isNoFlip ? originalValue : getValueDoppelganger(key, originalValue)
   return {key, value}
 }
 
