@@ -64,6 +64,14 @@ console.log(styles) // logs {paddingLeft: 23}
 </script>
 ```
 
+You can also control which rules you don't want to flip by adding a `/* @noflip */` CSS comment to your rule
+
+```javascript
+const rtlCSSJS = require('rtl-css-js')
+const styles = rtlCSSJS({paddingLeft: '20px /* @noflip */'})
+console.log(styles) // logs {paddingLeft: '20px /* @noflip */' }
+```
+
 ## Caveats
 
 ### `background`
