@@ -54,6 +54,7 @@ const shortTests = [
   [[{padding: '1px 2px 3px 4px'}], {padding: '1px 4px 3px 2px'}],
   [[{padding: '1px 2px 3px 4px !important', color: 'red'}], {padding: '1px 4px 3px 2px !important', color: 'red'}],
   [[{padding: 10, direction: 'rtl'}], {padding: 10, direction: 'ltr'}],
+  [[{margin: '1px 2px 3px 4px'}], {margin: '1px 4px 3px 2px'}],
   [[{float: 'left'}], {float: 'right'}],
   [[{float: 'left !important'}], {float: 'right !important'}],
   [[{clear: 'left'}], {clear: 'right'}],

@@ -101,6 +101,7 @@ const propertyValueConverters = {
     return propertyValueConverters.backgroundPosition(value)
   },
 }
+propertyValueConverters.margin = propertyValueConverters.padding
 propertyValueConverters.borderWidth = propertyValueConverters.padding
 propertyValueConverters.boxShadow = propertyValueConverters.textShadow
 propertyValueConverters.webkitBoxShadow = propertyValueConverters.textShadow
