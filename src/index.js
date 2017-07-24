@@ -159,6 +159,9 @@ function getPropertyDoppelganger(property) {
  */
 function getValueDoppelganger(key, originalValue) {
   /* eslint complexity:[2, 7] */ // let's try to keep the complexity down... If we have to do this much more, let's break this up
+  if (originalValue === undefined) {
+    return undefined
+  }
   if (isObject(originalValue)) {
     return convert(originalValue) // recurssion 🌀
   }
