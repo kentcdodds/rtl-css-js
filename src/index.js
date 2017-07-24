@@ -257,7 +257,7 @@ function isNumber(val) {
 }
 
 function isObject(val) {
-  return typeof val === 'object'
+  return val && typeof val === 'object'
 }
 
 function isString(val) {
