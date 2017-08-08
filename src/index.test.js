@@ -118,6 +118,10 @@ const shortTests = [
   [[{background: 'url(/foo/bar.png) no-repeat 77% 40%'}], {background: 'url(/foo/bar.png) no-repeat 23% 40%'}],
   [[{background: '#000 url(/foo/bar.png) no-repeat 77% 40%'}], {background: '#000 url(/foo/bar.png) no-repeat 23% 40%'}],
   [[{background: 'url(/foo/bar.png) 77% 40% !important'}], {background: 'url(/foo/bar.png) 23% 40% !important'}],
+  [[{marginLeft: null}], {marginRight: null}],
+  [[{paddingLeft: undefined}], {paddingRight: undefined}],
+  [[{':active': {marginLeft: null}}], {':active': {marginRight: null}}],
+  [[{':active': {paddingLeft: undefined}}], {':active': {paddingRight: undefined}}],
 ]
 
 // put short tests that should be skipped here
@@ -168,6 +172,10 @@ const unchanged = [
   [{padding: '1px 2px 3px 4px !important /* @noflip */'}],
   [{float: 'left /* @noflip */'}],
   [{borderColor: 'red #f00 hsl(0, 100%, 50%) hsla(0, 100%, 50%, 0.5) /* @noflip */'}],
+  [{margin: null}],
+  [{padding: undefined, lineHeight: 0.2}],
+  [{':active': {border: null, color: 'blue'}}],
+  [{':active': {border: undefined, color: 'blue'}}],
 ]
 
 shortTests.forEach(shortTest => {
