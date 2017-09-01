@@ -80,6 +80,7 @@ const shortTests = [
   [[{borderLeft: '1px solid red'}], {borderRight: '1px solid red'}],
   [[{borderLeftColor: 'red'}], {borderRightColor: 'red'}],
   [[{borderLeftStyle: 'red'}], {borderRightStyle: 'red'}],
+  [[{borderLeftWidth: '2px'}], {borderRightWidth: '2px'}],
   [[{borderColor: 'red green blue white'}], {borderColor: 'red white blue green'}],
   [[{borderColor: 'red #f00 rgb(255, 0, 0) rgba(255, 0, 0, 0.5)'}], {borderColor: 'red rgba(255, 0, 0, 0.5) rgb(255, 0, 0) #f00'}],
   [[{borderColor: 'red #f00 hsl(0, 100%, 50%) hsla(0, 100%, 50%, 0.5)'}], {borderColor: 'red hsla(0, 100%, 50%, 0.5) hsl(0, 100%, 50%) #f00'}],

@@ -6,6 +6,7 @@ const propertiesToConvert = arrayToObject([
   ['borderLeft', 'borderRight'],
   ['borderLeftColor', 'borderRightColor'],
   ['borderLeftStyle', 'borderRightStyle'],
+  ['borderLeftWidth', 'borderRightWidth'],
   ['borderTopLeftRadius', 'borderTopRightRadius'],
   ['borderBottomLeftRadius', 'borderBottomRightRadius'],
 ])
