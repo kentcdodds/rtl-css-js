@@ -15,7 +15,7 @@
 import convert from '../'
 
 // use this object for bigger tests
-// the key the test title
+// the key is the test title
 // the objects each have an input (array that's spread on a call to convert) and an output which is the resulting object
 // if you want to run `.only` or `.skip` for one of the tests
 // specify `modifier: 'only'` or `modifier: 'skip'` 👍
@@ -189,8 +189,16 @@ const shortTests = [
     {backgroundImage: 'repeating-linear-gradient(to left top, blue, red)'},
   ],
   [
-    [{backgroundImage: 'repeating-linear-gradient(to left, #00ff00 0%, #ff0000 100%)'}],
-    {backgroundImage: 'repeating-linear-gradient(to right, #00ff00 0%, #ff0000 100%)'},
+    [
+      {
+        backgroundImage:
+          'repeating-linear-gradient(to left, #00ff00 0%, #ff0000 100%)',
+      },
+    ],
+    {
+      backgroundImage:
+        'repeating-linear-gradient(to right, #00ff00 0%, #ff0000 100%)',
+    },
   ],
   [
     [{background: '#000 linear-gradient(to left top, blue, red)'}],
