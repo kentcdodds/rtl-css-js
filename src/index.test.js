@@ -123,6 +123,19 @@ const shortTests = [
   [[{paddingLeft: undefined}], {paddingRight: undefined}],
   [[{':active': {marginLeft: null}}], {':active': {marginRight: null}}],
   [[{':active': {paddingLeft: undefined}}], {':active': {paddingRight: undefined}}],
+  [[{transform: 'translate(30px)'}], {transform: 'translate(-30px)'}],
+  [[{transform: 'translate( 30px )'}], {transform: 'translate( -30px )'}],
+  [[{transform: 'translate(30%)'}], {transform: 'translate(-30%)'}],
+  [[{transform: 'translate(30%, 20%)'}], {transform: 'translate(-30%, 20%)'}],
+  [[{transform: 'translateX(-30px)'}], {transform: 'translateX(30px)'}],
+  [[{transform: 'translateX( 30px )'}], {transform: 'translateX( -30px )'}],
+  [[{transform: 'translateX(30%)'}], {transform: 'translateX(-30%)'}],
+  [[{transform: 'translateY(30px) rotate(20deg) translateX(10px)'}], {transform: 'translateY(30px) rotate(20deg) translateX(-10px)'}],
+  [[{transform: 'translateX(30px) rotate(20deg) translateY(10px)'}], {transform: 'translateX(-30px) rotate(20deg) translateY(10px)'}],
+  [[{transform: 'translate3d(30%, 20%, 10%)'}], {transform: 'translate3d(-30%, 20%, 10%)'}],
+  [[{transform: 'perspective(500px) translate3d(30%, 20%, 10%)'}], {transform: 'perspective(500px) translate3d(-30%, 20%, 10%)'}],
+  [[{webkitTransform: 'translateX(30px)'}], {webkitTransform: 'translateX(-30px)'}],
+  [[{mozTransform: 'translateX(30px)'}], {mozTransform: 'translateX(-30px)'}],
 ]
 
 // put short tests that should be skipped here
@@ -177,6 +190,9 @@ const unchanged = [
   [{padding: undefined, lineHeight: 0.2}],
   [{':active': {border: null, color: 'blue'}}],
   [{':active': {border: undefined, color: 'blue'}}],
+  [{transform: 'translateX(0px)'}],
+  [{transform: 'translateY(30px)'}],
+  [{transform: 'translateZ(30px)'}],
 ]
 
 shortTests.forEach(shortTest => {

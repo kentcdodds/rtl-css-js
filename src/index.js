@@ -101,6 +101,27 @@ const propertyValueConverters = {
     }
     return propertyValueConverters.backgroundPosition(value)
   },
+  transform(value) {
+    // This was copied and modified from CSSJanus:
+    // https://github.com/cssjanus/cssjanus/blob/4a40f001b1ba35567112d8b8e1d9d95eda4234c3/src/cssjanus.js#L152-L153
+    const nonAsciiPattern = '[^\\u0020-\\u007e]'
+    const unicodePattern = '(?:(?:\\[0-9a-f]{1,6})(?:\\r\\n|\\s)?)'
+    const numPattern = '(?:[0-9]*\\.[0-9]+|[0-9]+)'
+    const unitPattern = '(?:em|ex|px|cm|mm|in|pt|pc|deg|rad|grad|ms|s|hz|khz|%)'
+    const escapePattern = `(?:${unicodePattern}|\\\\[^\\r\\n\\f0-9a-f])`
+    const nmstartPattern = `(?:[_a-z]|${nonAsciiPattern}|${escapePattern})`
+    const nmcharPattern = `(?:[_a-z0-9-]|${nonAsciiPattern}|${escapePattern})`
+    const identPattern = `-?${nmstartPattern}${nmcharPattern}*`
+    const quantPattern = `${numPattern}(?:\\s*${unitPattern}|${identPattern})?`
+    const signedQuantPattern = `((?:-?${quantPattern})|(?:inherit|auto))`
+    const translateXRegExp = new RegExp(`(translateX\\s*\\(\\s*)${signedQuantPattern}(\\s*\\))`, 'gi')
+    const translateRegExp = new RegExp(`(translate\\s*\\(\\s*)${signedQuantPattern}((?:\\s*,\\s*${signedQuantPattern}){0,1}\\s*\\))`, 'gi')
+    const translate3dRegExp = new RegExp(`(translate3d\\s*\\(\\s*)${signedQuantPattern}((?:\\s*,\\s*${signedQuantPattern}){0,2}\\s*\\))`, 'gi')
+    return value
+      .replace(translateXRegExp, calculateNewTranslate)
+      .replace(translateRegExp, calculateNewTranslate)
+      .replace(translate3dRegExp, calculateNewTranslate)
+  },
 }
 propertyValueConverters.margin = propertyValueConverters.padding
 propertyValueConverters.borderWidth = propertyValueConverters.padding
@@ -108,6 +129,8 @@ propertyValueConverters.boxShadow = propertyValueConverters.textShadow
 propertyValueConverters.webkitBoxShadow = propertyValueConverters.textShadow
 propertyValueConverters.mozBoxShadow = propertyValueConverters.textShadow
 propertyValueConverters.borderStyle = propertyValueConverters.borderColor
+propertyValueConverters.webkitTransform = propertyValueConverters.transform
+propertyValueConverters.mozTransform = propertyValueConverters.transform
 
 // here's our main export! 👋
 export default convert
@@ -242,6 +265,32 @@ function calculateNewBackgroundPosition(value) {
     value = `${value.toFixed(len)}%`
   }
   return value
+}
+
+/**
+ * Flip the sign of a CSS value, possibly with a unit.
+ *
+ * We can't just negate the value with unary minus due to the units.
+ *
+ * @private
+ * @param {String} value - the original value (for example 77%)
+ * @return {String} the result (for example -77%)
+ */
+function flipSign(value) {
+  if (parseFloat(value) === 0) {
+    // Don't mangle zeroes
+    return value
+  }
+
+  if (value[0] === '-') {
+    return value.slice(1)
+  }
+
+  return `-${value}`
+}
+
+function calculateNewTranslate(match, prefix, offset, suffix) {
+  return prefix + flipSign(offset) + suffix
 }
 
 /**
