@@ -134,7 +134,7 @@ MIT
 [github-watch]: https://github.com/kentcdodds/rtl-css-js/watchers
 [github-star-badge]: https://img.shields.io/github/stars/kentcdodds/rtl-css-js.svg?style=social
 [github-star]: https://github.com/kentcdodds/rtl-css-js/stargazers
-[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20rtl-css-js!%20https://github.com/kentcdodds/rtl-css-js%20%F0%9F%91%8D
+[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20rtl-css-js%20by%20%40kentcdodds%20https%3A%2F%2Fgithub.com%2Fkentcdodds%2Frtl-css-js%20%F0%9F%91%8D
 [twitter-badge]: https://img.shields.io/twitter/url/https/github.com/kentcdodds/rtl-css-js.svg?style=social
 [emojis]: https://github.com/kentcdodds/all-contributors#emoji-key
 [all-contributors]: https://github.com/kentcdodds/all-contributors
