@@ -12,7 +12,7 @@
  * incorrect.
  */
 
-import convert from './'
+import convert from '../'
 
 // use this object for bigger tests
 // the key the test title
@@ -45,14 +45,26 @@ const shortTests = [
   [[{padding: '.25em 0ex 0pt 15px'}], {padding: '.25em 15px 0pt 0ex'}],
   [[{padding: '1px 2% 3px 4.1grad'}], {padding: '1px 4.1grad 3px 2%'}],
   [[{padding: '1px auto 3px 2px'}], {padding: '1px 2px 3px auto'}],
-  [[{padding: '1.1px 2.2px 3.3px 4.4px'}], {padding: '1.1px 4.4px 3.3px 2.2px'}],
+  [
+    [{padding: '1.1px 2.2px 3.3px 4.4px'}],
+    {padding: '1.1px 4.4px 3.3px 2.2px'},
+  ],
   [[{padding: '1px auto 3px inherit'}], {padding: '1px inherit 3px auto'}],
-  [[{padding: '1px 2px 3px 4px !important'}], {padding: '1px 4px 3px 2px !important'}],
-  [[{padding: '1px 2px 3px 4px !important'}], {padding: '1px 4px 3px 2px !important'}],
+  [
+    [{padding: '1px 2px 3px 4px !important'}],
+    {padding: '1px 4px 3px 2px !important'},
+  ],
+  [
+    [{padding: '1px 2px 3px 4px !important'}],
+    {padding: '1px 4px 3px 2px !important'},
+  ],
   [[{padding: '1px 2px 3px 4px'}], {padding: '1px 4px 3px 2px'}],
   [[{padding: '1px  2px   3px    4px'}], {padding: '1px 4px 3px 2px'}],
   [[{padding: '1px 2px 3px 4px'}], {padding: '1px 4px 3px 2px'}],
-  [[{padding: '1px 2px 3px 4px !important', color: 'red'}], {padding: '1px 4px 3px 2px !important', color: 'red'}],
+  [
+    [{padding: '1px 2px 3px 4px !important', color: 'red'}],
+    {padding: '1px 4px 3px 2px !important', color: 'red'},
+  ],
   [[{padding: 10, direction: 'rtl'}], {padding: 10, direction: 'ltr'}],
   [[{margin: '1px 2px 3px 4px'}], {margin: '1px 4px 3px 2px'}],
   [[{float: 'left'}], {float: 'right'}],
@@ -68,40 +80,94 @@ const shortTests = [
   [[{textShadow: 'red -2px 0'}], {textShadow: 'red 2px 0'}],
   [[{textShadow: '2px 0 red'}], {textShadow: '-2px 0 red'}],
   [[{textShadow: '-2px 0 red'}], {textShadow: '2px 0 red'}],
-  [[{boxShadow: '-6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}], {boxShadow: '6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
-  [[{boxShadow: 'inset -6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}], {boxShadow: 'inset 6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
+  [
+    [{boxShadow: '-6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
+    {boxShadow: '6px 3px 8px 5px rgba(0, 0, 0, 0.25)'},
+  ],
+  [
+    [{boxShadow: 'inset -6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
+    {boxShadow: 'inset 6px 3px 8px 5px rgba(0, 0, 0, 0.25)'},
+  ],
   [[{boxShadow: 'inset .5em 0 0 white'}], {boxShadow: 'inset -.5em 0 0 white'}],
-  [[{boxShadow: 'inset 0.5em 0 0 white'}], {boxShadow: 'inset -0.5em 0 0 white'}],
+  [
+    [{boxShadow: 'inset 0.5em 0 0 white'}],
+    {boxShadow: 'inset -0.5em 0 0 white'},
+  ],
   [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
   [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
-  [[{webkitBoxShadow: '-1px 2px 3px 3px red'}], {webkitBoxShadow: '1px 2px 3px 3px red'}],
-  [[{mozBoxShadow: '-1px 2px 3px 3px red'}], {mozBoxShadow: '1px 2px 3px 3px red'}],
+  [
+    [{webkitBoxShadow: '-1px 2px 3px 3px red'}],
+    {webkitBoxShadow: '1px 2px 3px 3px red'},
+  ],
+  [
+    [{mozBoxShadow: '-1px 2px 3px 3px red'}],
+    {mozBoxShadow: '1px 2px 3px 3px red'},
+  ],
   [[{borderLeft: 0}], {borderRight: 0}],
   [[{borderLeft: '1px solid red'}], {borderRight: '1px solid red'}],
   [[{borderLeftColor: 'red'}], {borderRightColor: 'red'}],
   [[{borderLeftStyle: 'red'}], {borderRightStyle: 'red'}],
   [[{borderLeftWidth: '2px'}], {borderRightWidth: '2px'}],
-  [[{borderColor: 'red green blue white'}], {borderColor: 'red white blue green'}],
-  [[{borderColor: 'red #f00 rgb(255, 0, 0) rgba(255, 0, 0, 0.5)'}], {borderColor: 'red rgba(255, 0, 0, 0.5) rgb(255, 0, 0) #f00'}],
-  [[{borderColor: 'red #f00 hsl(0, 100%, 50%) hsla(0, 100%, 50%, 0.5)'}], {borderColor: 'red hsla(0, 100%, 50%, 0.5) hsl(0, 100%, 50%) #f00'}],
+  [
+    [{borderColor: 'red green blue white'}],
+    {borderColor: 'red white blue green'},
+  ],
+  [
+    [{borderColor: 'red #f00 rgb(255, 0, 0) rgba(255, 0, 0, 0.5)'}],
+    {borderColor: 'red rgba(255, 0, 0, 0.5) rgb(255, 0, 0) #f00'},
+  ],
+  [
+    [{borderColor: 'red #f00 hsl(0, 100%, 50%) hsla(0, 100%, 50%, 0.5)'}],
+    {borderColor: 'red hsla(0, 100%, 50%, 0.5) hsl(0, 100%, 50%) #f00'},
+  ],
   [[{borderWidth: '1px 2px 3px 4px'}], {borderWidth: '1px 4px 3px 2px'}],
-  [[{borderStyle: 'none dotted dashed solid'}], {borderStyle: 'none solid dashed dotted'}],
+  [
+    [{borderStyle: 'none dotted dashed solid'}],
+    {borderStyle: 'none solid dashed dotted'},
+  ],
   [[{borderTopLeftRadius: 0}], {borderTopRightRadius: 0}],
   [[{borderBottomLeftRadius: 0}], {borderBottomRightRadius: 0}],
   [[{borderRadius: '1px 2px'}], {borderRadius: '2px 1px'}],
   [[{borderRadius: '1px 2px 3px 4px'}], {borderRadius: '2px 1px 4px 3px'}],
   [[{borderRadius: '1px 2px 3px 4px'}], {borderRadius: '2px 1px 4px 3px'}],
   [[{borderRadius: '15px / 0 20px'}], {borderRadius: '15px / 20px 0'}],
-  [[{borderRadius: '1px 2px 3px 4px / 5px 6px 7px 8px'}], {borderRadius: '2px 1px 4px 3px / 6px 5px 8px 7px'}],
-  [[{borderRadius: '1px 2px 3px 4px !important'}], {borderRadius: '2px 1px 4px 3px !important'}],
+  [
+    [{borderRadius: '1px 2px 3px 4px / 5px 6px 7px 8px'}],
+    {borderRadius: '2px 1px 4px 3px / 6px 5px 8px 7px'},
+  ],
+  [
+    [{borderRadius: '1px 2px 3px 4px !important'}],
+    {borderRadius: '2px 1px 4px 3px !important'},
+  ],
   [[{borderRadius: '1px 2px 3px 4px'}], {borderRadius: '2px 1px 4px 3px'}],
-  [[{borderRadius: '1px 2px 3px calc(calc(2*2) * 3px)'}], {borderRadius: '2px 1px calc(calc(2*2) * 3px) 3px'}],
-  [[{background: 'url(/foo/bar.png) left top'}], {background: 'url(/foo/bar.png) right top'}],
-  [[{background: 'url(/foo/bar.png) no-repeat left top'}], {background: 'url(/foo/bar.png) no-repeat right top'}],
-  [[{background: '#000 url(/foo/bar.png) no-repeat left top'}], {background: '#000 url(/foo/bar.png) no-repeat right top'}],
-  [[{background: 'url(/foo/bar-ltr.png)'}], {background: 'url(/foo/bar-rtl.png)'}],
-  [[{background: 'url(/foo/bar-rtl.png)'}], {background: 'url(/foo/bar-ltr.png)'}],
-  [[{backgroundImage: 'url(/foo/bar-rtl.png)'}], {backgroundImage: 'url(/foo/bar-ltr.png)'}],
+  [
+    [{borderRadius: '1px 2px 3px calc(calc(2*2) * 3px)'}],
+    {borderRadius: '2px 1px calc(calc(2*2) * 3px) 3px'},
+  ],
+  [
+    [{background: 'url(/foo/bar.png) left top'}],
+    {background: 'url(/foo/bar.png) right top'},
+  ],
+  [
+    [{background: 'url(/foo/bar.png) no-repeat left top'}],
+    {background: 'url(/foo/bar.png) no-repeat right top'},
+  ],
+  [
+    [{background: '#000 url(/foo/bar.png) no-repeat left top'}],
+    {background: '#000 url(/foo/bar.png) no-repeat right top'},
+  ],
+  [
+    [{background: 'url(/foo/bar-ltr.png)'}],
+    {background: 'url(/foo/bar-rtl.png)'},
+  ],
+  [
+    [{background: 'url(/foo/bar-rtl.png)'}],
+    {background: 'url(/foo/bar-ltr.png)'},
+  ],
+  [
+    [{backgroundImage: 'url(/foo/bar-rtl.png)'}],
+    {backgroundImage: 'url(/foo/bar-ltr.png)'},
+  ],
   [[{backgroundPosition: 'left top'}], {backgroundPosition: 'right top'}],
   [[{backgroundPosition: 'left -5px'}], {backgroundPosition: 'right -5px'}],
   [[{backgroundPosition: '77% 40%'}], {backgroundPosition: '23% 40%'}],
@@ -109,20 +175,44 @@ const shortTests = [
   [[{backgroundPosition: '2.3210% 40%'}], {backgroundPosition: '97.6790% 40%'}],
   [[{backgroundPosition: '0% 100%'}], {backgroundPosition: '100% 100%'}],
   [[{backgroundPosition: '77% -5px'}], {backgroundPosition: '23% -5px'}],
-  [[{backgroundPosition: '0% 100% !important'}], {backgroundPosition: '100% 100% !important'}],
+  [
+    [{backgroundPosition: '0% 100% !important'}],
+    {backgroundPosition: '100% 100% !important'},
+  ],
   [[{backgroundPosition: '0% 100%'}], {backgroundPosition: '100% 100%'}],
   [[{backgroundPosition: '0% 100%'}], {backgroundPosition: '100% 100%'}],
   [[{backgroundPositionX: '77%'}], {backgroundPositionX: '23%'}],
-  [[{backgroundPositionX: '77% !important'}], {backgroundPositionX: '23% !important'}],
-  [[{background: 'url(/foo/bar.png) 77% 40%'}], {background: 'url(/foo/bar.png) 23% 40%'}],
-  [[{background: 'url(/foo/bar.png) 77%'}], {background: 'url(/foo/bar.png) 23%'}],
-  [[{background: 'url(/foo/bar.png) no-repeat 77% 40%'}], {background: 'url(/foo/bar.png) no-repeat 23% 40%'}],
-  [[{background: '#000 url(/foo/bar.png) no-repeat 77% 40%'}], {background: '#000 url(/foo/bar.png) no-repeat 23% 40%'}],
-  [[{background: 'url(/foo/bar.png) 77% 40% !important'}], {background: 'url(/foo/bar.png) 23% 40% !important'}],
+  [
+    [{backgroundPositionX: '77% !important'}],
+    {backgroundPositionX: '23% !important'},
+  ],
+  [
+    [{background: 'url(/foo/bar.png) 77% 40%'}],
+    {background: 'url(/foo/bar.png) 23% 40%'},
+  ],
+  [
+    [{background: 'url(/foo/bar.png) 77%'}],
+    {background: 'url(/foo/bar.png) 23%'},
+  ],
+  [
+    [{background: 'url(/foo/bar.png) no-repeat 77% 40%'}],
+    {background: 'url(/foo/bar.png) no-repeat 23% 40%'},
+  ],
+  [
+    [{background: '#000 url(/foo/bar.png) no-repeat 77% 40%'}],
+    {background: '#000 url(/foo/bar.png) no-repeat 23% 40%'},
+  ],
+  [
+    [{background: 'url(/foo/bar.png) 77% 40% !important'}],
+    {background: 'url(/foo/bar.png) 23% 40% !important'},
+  ],
   [[{marginLeft: null}], {marginRight: null}],
   [[{paddingLeft: undefined}], {paddingRight: undefined}],
   [[{':active': {marginLeft: null}}], {':active': {marginRight: null}}],
-  [[{':active': {paddingLeft: undefined}}], {':active': {paddingRight: undefined}}],
+  [
+    [{':active': {paddingLeft: undefined}}],
+    {':active': {paddingRight: undefined}},
+  ],
   [[{transform: 'translate(30px)'}], {transform: 'translate(-30px)'}],
   [[{transform: 'translate( 30px )'}], {transform: 'translate( -30px )'}],
   [[{transform: 'translate(30%)'}], {transform: 'translate(-30%)'}],
@@ -130,18 +220,32 @@ const shortTests = [
   [[{transform: 'translateX(-30px)'}], {transform: 'translateX(30px)'}],
   [[{transform: 'translateX( 30px )'}], {transform: 'translateX( -30px )'}],
   [[{transform: 'translateX(30%)'}], {transform: 'translateX(-30%)'}],
-  [[{transform: 'translateY(30px) rotate(20deg) translateX(10px)'}], {transform: 'translateY(30px) rotate(20deg) translateX(-10px)'}],
-  [[{transform: 'translateX(30px) rotate(20deg) translateY(10px)'}], {transform: 'translateX(-30px) rotate(20deg) translateY(10px)'}],
-  [[{transform: 'translate3d(30%, 20%, 10%)'}], {transform: 'translate3d(-30%, 20%, 10%)'}],
-  [[{transform: 'perspective(500px) translate3d(30%, 20%, 10%)'}], {transform: 'perspective(500px) translate3d(-30%, 20%, 10%)'}],
-  [[{webkitTransform: 'translateX(30px)'}], {webkitTransform: 'translateX(-30px)'}],
+  [
+    [{transform: 'translateY(30px) rotate(20deg) translateX(10px)'}],
+    {transform: 'translateY(30px) rotate(20deg) translateX(-10px)'},
+  ],
+  [
+    [{transform: 'translateX(30px) rotate(20deg) translateY(10px)'}],
+    {transform: 'translateX(-30px) rotate(20deg) translateY(10px)'},
+  ],
+  [
+    [{transform: 'translate3d(30%, 20%, 10%)'}],
+    {transform: 'translate3d(-30%, 20%, 10%)'},
+  ],
+  [
+    [{transform: 'perspective(500px) translate3d(30%, 20%, 10%)'}],
+    {transform: 'perspective(500px) translate3d(-30%, 20%, 10%)'},
+  ],
+  [
+    [{webkitTransform: 'translateX(30px)'}],
+    {webkitTransform: 'translateX(-30px)'},
+  ],
   [[{mozTransform: 'translateX(30px)'}], {mozTransform: 'translateX(-30px)'}],
 ]
 
 // put short tests that should be skipped here
 // you can specify a modifier as a third item in the array
-const shortTestsTodo = [
-]
+const shortTestsTodo = []
 
 // put tests here where rtl-css-js should not change the input
 // unfortunately no way to add a modifier to this 😿
@@ -181,11 +285,21 @@ const unchanged = [
   [{leftxx: 10}],
   [{rightxx: 10}],
   [{backgroundImage: 'mozLinearGradient(#326cc1, #234e8c)'}],
-  [{backgroundImage: 'webkitGradient(linear, 100% 0%, 0% 0%, from(#666666), to(#ffffff))'}],
+  [
+    {
+      backgroundImage:
+        'webkitGradient(linear, 100% 0%, 0% 0%, from(#666666), to(#ffffff))',
+    },
+  ],
   [{background: '#000 url(/foo/bar.png) no-repeat 77% 40% /* @noflip */'}],
   [{padding: '1px 2px 3px 4px !important /* @noflip */'}],
   [{float: 'left /* @noflip */'}],
-  [{borderColor: 'red #f00 hsl(0, 100%, 50%) hsla(0, 100%, 50%, 0.5) /* @noflip */'}],
+  [
+    {
+      borderColor:
+        'red #f00 hsl(0, 100%, 50%) hsla(0, 100%, 50%, 0.5) /* @noflip */',
+    },
+  ],
   [{margin: null}],
   [{padding: undefined, lineHeight: 0.2}],
   [{':active': {border: null, color: 'blue'}}],
@@ -197,13 +311,17 @@ const unchanged = [
 
 shortTests.forEach(shortTest => {
   const [input, output, modifier] = shortTest
-  const title = `changes ${JSON.stringify(input[0])} to ${JSON.stringify(output)}`
+  const title = `changes ${JSON.stringify(input[0])} to ${JSON.stringify(
+    output,
+  )}`
   tests[title] = {input, output, modifier}
 })
 
 shortTestsTodo.forEach(shortTest => {
   const [input, output, modifier = 'skip'] = shortTest
-  const title = `changes ${JSON.stringify(input[0])} to ${JSON.stringify(output)}`
+  const title = `changes ${JSON.stringify(input[0])} to ${JSON.stringify(
+    output,
+  )}`
   tests[title] = {input, output, modifier}
 })
 
@@ -214,7 +332,9 @@ unchanged.forEach(shortTest => {
   tests[title] = {input, output}
 })
 
-const hasBalrog = Object.keys(tests).some(title => tests[title].modifier === 'balrog')
+const hasBalrog = Object.keys(tests).some(
+  title => tests[title].modifier === 'balrog',
+)
 
 Object.keys(tests)
   .filter(title => !hasBalrog || tests[title].modifier === 'balrog')
