@@ -168,6 +168,34 @@ const shortTests = [
     [{backgroundImage: 'url(/foo/bar-rtl.png)'}],
     {backgroundImage: 'url(/foo/bar-ltr.png)'},
   ],
+  [
+    [{backgroundImage: 'linear-gradient(to left top, blue, red)'}],
+    {backgroundImage: 'linear-gradient(to right top, blue, red)'},
+  ],
+  [
+    [{backgroundImage: 'linear-gradient(to right top, blue, red)'}],
+    {backgroundImage: 'linear-gradient(to left top, blue, red)'},
+  ],
+  [
+    [{backgroundImage: 'linear-gradient(to left, #00ff00 0%, #ff0000 100%)'}],
+    {backgroundImage: 'linear-gradient(to right, #00ff00 0%, #ff0000 100%)'},
+  ],
+  [
+    [{backgroundImage: 'repeating-linear-gradient(to left top, blue, red)'}],
+    {backgroundImage: 'repeating-linear-gradient(to right top, blue, red)'},
+  ],
+  [
+    [{backgroundImage: 'repeating-linear-gradient(to right top, blue, red)'}],
+    {backgroundImage: 'repeating-linear-gradient(to left top, blue, red)'},
+  ],
+  [
+    [{backgroundImage: 'repeating-linear-gradient(to left, #00ff00 0%, #ff0000 100%)'}],
+    {backgroundImage: 'repeating-linear-gradient(to right, #00ff00 0%, #ff0000 100%)'},
+  ],
+  [
+    [{background: '#000 linear-gradient(to left top, blue, red)'}],
+    {background: '#000 linear-gradient(to right top, blue, red)'},
+  ],
   [[{backgroundPosition: 'left top'}], {backgroundPosition: 'right top'}],
   [[{backgroundPosition: 'left -5px'}], {backgroundPosition: 'right -5px'}],
   [[{backgroundPosition: '77% 40%'}], {backgroundPosition: '23% 40%'}],
@@ -275,6 +303,9 @@ const unchanged = [
   [{backgroundPositionX: 10}],
   [{backgroundPositionY: '40%'}],
   [{backgroundImage: 'linear-gradient(#eb01a5, #d13531)'}],
+  [{backgroundImage: 'linear-gradient(45deg, blue, red)'}],
+  [{backgroundImage: 'repeating-linear-gradient(#eb01a5, #d13531)'}],
+  [{backgroundImage: 'repeating-linear-gradient(45deg, blue, red)'}],
   [{background: 'url(/foo/bright.png)'}],
   [{background: 'url(/foo/leftovers.png)'}],
   [{background: 'url("http'}],

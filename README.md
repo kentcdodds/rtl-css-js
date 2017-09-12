@@ -79,9 +79,9 @@ console.log(styles) // logs {paddingLeft: '20px /* @noflip */' }
 ### `background`
 
 Right now `background` and `backgroundImage` just replace all instances of `ltr` with `rtl` and `right` with `left`.
-This is so you can have a different image for your LTR and RTL. Note that this is case sensitive! Must be lower case.
-Note also that it *will not* change `bright` to `bleft`. It's a _little_ smarter than that. But this is definitely
-something to consider with your URLs.
+This is so you can have a different image for your LTR and RTL, and in order to flip linear gradients. Note that
+this is case sensitive! Must be lower case. Note also that it *will not* change `bright` to `bleft`.
+It's a _little_ smarter than that. But this is definitely something to consider with your URLs.
 
 ## Inspiration
 

@@ -88,7 +88,7 @@ const propertyValueConverters = {
     return propertyValueConverters.backgroundImage(value)
   },
   backgroundImage(value) {
-    if (!includes(value, 'url(')) {
+    if (!includes(value, 'url(') && !includes(value, 'linear-gradient(')) {
       return value
     }
     // sorry for the regex 😞, but basically this replaces _every_ instance of `ltr`, `rtl`, `right`, and `left` with
