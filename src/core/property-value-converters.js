@@ -1,9 +1,11 @@
-import includes from './includes'
-import isNumber from './isNumber'
-import calculateNewBackgroundPosition from './calculateNewBackgroundPosition'
-import calculateNewTranslate from './calculateNewTranslate'
-import handleQuartetValues from './handleQuartetValues'
-import getValuesAsList from './getValuesAsList'
+import {
+  includes,
+  isNumber,
+  calculateNewBackgroundPosition,
+  calculateNewTranslate,
+  handleQuartetValues,
+  getValuesAsList,
+} from './utils'
 
 // some values require a little fudging, that fudging goes here.
 const propertyValueConverters = {
