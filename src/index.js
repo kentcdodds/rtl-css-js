@@ -40,9 +40,6 @@ const bgImgDirectionRegex = new RegExp(
 )
 const bgPosDirectionRegex = new RegExp('(left)|(right)')
 
-// here's our main export! 👋
-export default convert
-
 /**
  * converts properties and values in the CSS in JS object to their corresponding RTL values
  * @param {Object} object the CSS in JS object
@@ -124,3 +121,6 @@ function getValueDoppelganger(key, originalValue) {
   }
   return newValue
 }
+
+// here's our main export! 👋
+export default convert

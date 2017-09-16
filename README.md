@@ -9,7 +9,7 @@ RTL conversion for CSS in JS objects
 [![downloads][downloads-badge]][npm-stat]
 [![MIT License][license-badge]][LICENSE]
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Donate][donate-badge]][donate]
 [![Code of Conduct][coc-badge]][coc]
@@ -59,7 +59,7 @@ console.log(styles) // logs {paddingRight: 23}
 You can also just include a script tag in your browser and use the `rtlCSSJS` variable:
 
 ```html
-<script src="https://unpkg.com/rtl-css-js@1.0.0-beta.1"></script>
+<script src="https://unpkg.com/rtl-css-js"></script>
 <script>
 const styles = rtlCSSJS({paddingRight: 23})
 console.log(styles) // logs {paddingLeft: 23}
@@ -73,6 +73,17 @@ const rtlCSSJS = require('rtl-css-js')
 const styles = rtlCSSJS({paddingLeft: '20px /* @noflip */'})
 console.log(styles) // logs {paddingLeft: '20px /* @noflip */' }
 ```
+
+### core
+
+`rtl-css-js` also exposes its internal helpers and utilities so you can deal
+with [certain scenarios](https://github.com/kentcdodds/rtl-css-js/pull/22)
+yourself. To use these you can use the `rtlCSSJSCore` global with the UMD build,
+`require('rtl-css-js/core')`, or use
+`import {propertyValueConverters, arrayToObject} from 'rtl-css-js/core.esm'`.
+
+You can import anything that's exported from `src/core`. Please see the code
+comments for documentation on how to use these.
 
 ## Caveats
 
@@ -96,8 +107,8 @@ I'm not aware of any, if you are please [make a pull request](http://makeapullre
 Thanks goes to these people ([emoji key][emojis]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Tests") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars.githubusercontent.com/u/63876?v=3" width="100px;"/><br /><sub>Ahmed El Gabri</sub>](https://gabri.me)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Code") [📖](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Documentation") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Tests") | [<img src="https://avatars1.githubusercontent.com/u/1383861?v=4" width="100px;"/><br /><sub>Maja Wichrowska</sub>](https://github.com/majapw)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Tests") | [<img src="https://avatars2.githubusercontent.com/u/6600720?v=4" width="100px;"/><br /><sub>Yaniv</sub>](https://github.com/yzimet)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Tests") |
-| :---: | :---: | :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Tests") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars.githubusercontent.com/u/63876?v=3" width="100px;"/><br /><sub>Ahmed El Gabri</sub>](https://gabri.me)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Code") [📖](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Documentation") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Tests") | [<img src="https://avatars1.githubusercontent.com/u/1383861?v=4" width="100px;"/><br /><sub>Maja Wichrowska</sub>](https://github.com/majapw)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Tests") | [<img src="https://avatars2.githubusercontent.com/u/6600720?v=4" width="100px;"/><br /><sub>Yaniv</sub>](https://github.com/yzimet)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Tests") | [<img src="https://avatars2.githubusercontent.com/u/5658514?v=4" width="100px;"/><br /><sub>Jonathan Pollak</sub>](https://github.com/TxHawks)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=TxHawks "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=TxHawks "Tests") |
+| :---: | :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification. Contributions of any kind welcome!

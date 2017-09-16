@@ -48,6 +48,16 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "TxHawks",
+      "name": "Jonathan Pollak",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/5658514?v=4",
+      "profile": "https://github.com/TxHawks",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ]
 }
