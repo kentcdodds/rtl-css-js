@@ -3,8 +3,8 @@
   "version": "0.0.0-semantically-released.0",
   "description": "Right To Left conversion for CSS in JS objects",
   "main": "dist/rtl-css-js.cjs.js",
-  "jsnext:main": "dist/rtl-css-js.es.js",
-  "module": "dist/rtl-css-js.es.js",
+  "jsnext:main": "dist/rtl-css-js.esm.js",
+  "module": "dist/rtl-css-js.esm.js",
   "scripts": {
     "add-contributor": "kcd-scripts contributors add",
     "build": "rimraf dist && npm-run-all build:*",
@@ -18,7 +18,7 @@
     "validate": "kcd-scripts validate",
     "precommit": "kcd-scripts precommit"
   },
-  "files": ["dist", "core", "core.esm"],
+  "files": ["dist", "core.js", "core.esm.js"],
   "keywords": ["css-in-js", "ltr", "rtl", "cssjanus"],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
