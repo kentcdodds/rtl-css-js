@@ -98,6 +98,12 @@ It's a _little_ smarter than that. But this is definitely something to consider 
 
 [CSSJanus](https://github.com/cssjanus/cssjanus) was a major inspiration.
 
+## Ecosystem
+
+* **[react-with-styles-interface-aphrodite](https://github.com/airbnb/react-with-styles-interface-aphrodite):** An interface to use [`react-with-styles`](https://github.com/airbnb/react-with-styles) with [Aphrodite](https://github.com/khan/aphrodite)
+* **[fela-plugin-rtl](https://www.npmjs.com/package/fela-plugin-rtl):** A plugin for [fela](http://fela.js.org/) that uses rtl-css-js to convert a style object to its right-to-left counterpart
+* **[bidi-css-js](https://github.com/TxHawks/bidi-css-js):** A library for authoring flow-relative css, which uses `rtl-css-js`'s core.
+
 ## Other Solutions
 
 I'm not aware of any, if you are please [make a pull request](http://makeapullrequest.com) and add it here!
