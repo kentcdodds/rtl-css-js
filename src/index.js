@@ -20,6 +20,8 @@ const propertiesToConvert = arrayToObject([
   ['borderBottomLeftRadius', 'borderBottomRightRadius'],
 ])
 
+const propsToIgnore = ['content']
+
 // this is the same as the propertiesToConvert except for values
 const valuesToConvert = arrayToObject([
   ['ltr', 'rtl'],
@@ -52,6 +54,13 @@ function convert(object) {
       // you're welcome to later code 😺
       originalValue = originalValue.trim()
     }
+
+    // Some properties should never be transformed
+    if (propsToIgnore.includes(originalKey)) {
+      newObj[originalKey] = originalValue
+      return newObj
+    }
+
     const {key, value} = convertProperty(originalKey, originalValue)
     newObj[key] = value
     return newObj

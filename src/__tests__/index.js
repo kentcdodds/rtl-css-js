@@ -346,6 +346,8 @@ const unchanged = [
   [{transform: 'translateX(0px)'}],
   [{transform: 'translateY(30px)'}],
   [{transform: 'translateZ(30px)'}],
+  [{content: 'left'}],
+  [{content: 'right'}],
 ]
 
 shortTests.forEach(shortTest => {
