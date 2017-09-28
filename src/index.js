@@ -1,4 +1,5 @@
 import {
+  includes,
   arrayToObject,
   isNumber,
   isObject,
@@ -56,7 +57,7 @@ function convert(object) {
     }
 
     // Some properties should never be transformed
-    if (propsToIgnore.includes(originalKey)) {
+    if (includes(propsToIgnore, originalKey)) {
       newObj[originalKey] = originalValue
       return newObj
     }
