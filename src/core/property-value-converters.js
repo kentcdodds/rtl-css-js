@@ -159,4 +159,20 @@ propertyValueConverters.borderStyle = propertyValueConverters.borderColor
 propertyValueConverters.webkitTransform = propertyValueConverters.transform
 propertyValueConverters.mozTransform = propertyValueConverters.transform
 
+// kebab-case versions
+
+propertyValueConverters['text-shadow'] = propertyValueConverters.textShadow
+propertyValueConverters['border-color'] = propertyValueConverters.borderColor
+propertyValueConverters['border-radius'] = propertyValueConverters.borderRadius
+propertyValueConverters['background-image'] = propertyValueConverters.backgroundImage
+propertyValueConverters['background-position'] = propertyValueConverters.backgroundPosition
+propertyValueConverters['background-position-x'] = propertyValueConverters.backgroundPositionX
+propertyValueConverters['border-width'] = propertyValueConverters.padding
+propertyValueConverters['box-shadow'] = propertyValueConverters.textShadow
+propertyValueConverters['-webkit-box-shadow'] = propertyValueConverters.textShadow
+propertyValueConverters['-moz-box-shadow'] = propertyValueConverters.textShadow
+propertyValueConverters['border-style'] = propertyValueConverters.borderColor
+propertyValueConverters['-webkit-transform'] = propertyValueConverters.transform
+propertyValueConverters['-moz-transform'] = propertyValueConverters.transform
+
 export default propertyValueConverters
