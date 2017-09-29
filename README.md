@@ -9,7 +9,7 @@ RTL conversion for CSS in JS objects
 [![downloads][downloads-badge]][npm-stat]
 [![MIT License][license-badge]][LICENSE]
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
 [![Donate][donate-badge]][donate]
 [![Code of Conduct][coc-badge]][coc]
@@ -74,6 +74,16 @@ const styles = rtlCSSJS({paddingLeft: '20px /* @noflip */'})
 console.log(styles) // logs {paddingLeft: '20px /* @noflip */' }
 ```
 
+### kebab-case
+
+This library support kebab-case properties too.
+
+```javascript
+const rtlCSSJS = require('rtl-css-js')
+const styles = rtlCSSJS({'padding-right': 23})
+console.log(styles) // logs {'padding-left': 23}
+```
+
 ### core
 
 `rtl-css-js` also exposes its internal helpers and utilities so you can deal
@@ -113,8 +123,8 @@ I'm not aware of any, if you are please [make a pull request](http://makeapullre
 Thanks goes to these people ([emoji key][emojis]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Tests") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars.githubusercontent.com/u/63876?v=3" width="100px;"/><br /><sub>Ahmed El Gabri</sub>](https://gabri.me)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Code") [📖](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Documentation") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Tests") | [<img src="https://avatars1.githubusercontent.com/u/1383861?v=4" width="100px;"/><br /><sub>Maja Wichrowska</sub>](https://github.com/majapw)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Tests") | [<img src="https://avatars2.githubusercontent.com/u/6600720?v=4" width="100px;"/><br /><sub>Yaniv</sub>](https://github.com/yzimet)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Tests") | [<img src="https://avatars2.githubusercontent.com/u/5658514?v=4" width="100px;"/><br /><sub>Jonathan Pollak</sub>](https://github.com/TxHawks)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=TxHawks "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=TxHawks "Tests") |
-| :---: | :---: | :---: | :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Tests") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars.githubusercontent.com/u/63876?v=3" width="100px;"/><br /><sub>Ahmed El Gabri</sub>](https://gabri.me)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Code") [📖](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Documentation") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Tests") | [<img src="https://avatars1.githubusercontent.com/u/1383861?v=4" width="100px;"/><br /><sub>Maja Wichrowska</sub>](https://github.com/majapw)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Tests") | [<img src="https://avatars2.githubusercontent.com/u/6600720?v=4" width="100px;"/><br /><sub>Yaniv</sub>](https://github.com/yzimet)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Tests") | [<img src="https://avatars2.githubusercontent.com/u/5658514?v=4" width="100px;"/><br /><sub>Jonathan Pollak</sub>](https://github.com/TxHawks)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=TxHawks "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=TxHawks "Tests") | [<img src="https://avatars1.githubusercontent.com/u/8528759?v=4" width="100px;"/><br /><sub>Ali Taheri Moghaddar</sub>](https://github.com/alitaheri)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=alitaheri "Code") [📖](https://github.com/kentcdodds/rtl-css-js/commits?author=alitaheri "Documentation") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=alitaheri "Tests") |
+| :---: | :---: | :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification. Contributions of any kind welcome!

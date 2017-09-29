@@ -19,6 +19,15 @@ const propertiesToConvert = arrayToObject([
   ['borderLeftWidth', 'borderRightWidth'],
   ['borderTopLeftRadius', 'borderTopRightRadius'],
   ['borderBottomLeftRadius', 'borderBottomRightRadius'],
+  // kebab-case versions
+  ['padding-left', 'padding-right'],
+  ['margin-left', 'margin-right'],
+  ['border-left', 'border-right'],
+  ['border-left-color', 'border-right-color'],
+  ['border-left-style', 'border-right-style'],
+  ['border-left-width', 'border-right-width'],
+  ['border-top-left-radius', 'border-top-right-radius'],
+  ['border-bottom-left-radius', 'border-bottom-right-radius'],
 ])
 
 const propsToIgnore = ['content']
