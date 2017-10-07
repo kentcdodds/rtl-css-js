@@ -11,6 +11,10 @@ function arrayToObject(array) {
   }, {})
 }
 
+function isBoolean(val) {
+  return typeof val === 'boolean'
+}
+
 function isNumber(val) {
   return typeof val === 'number'
 }
@@ -130,6 +134,7 @@ export {
   flipSign,
   handleQuartetValues,
   includes,
+  isBoolean,
   isNullOrUndefined,
   isNumber,
   isObject,
