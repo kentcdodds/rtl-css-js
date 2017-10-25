@@ -257,17 +257,20 @@ const shortTests = [
   [[{transform: 'translateX( 30px )'}], {transform: 'translateX( -30px )'}],
   [[{transform: 'translateX(30%)'}], {transform: 'translateX(-30%)'}],
   [
-    [{transform: 'translateY(30px) rotate(20deg) translateX(10px)'}],
-    {transform: 'translateY(30px) rotate(20deg) translateX(-10px)'},
+    [{transform: 'translateY(30px) scale(2) translateX(10px)'}],
+    {transform: 'translateY(30px) scale(2) translateX(-10px)'},
   ],
   [
-    [{transform: 'translateX(30px) rotate(20deg) translateY(10px)'}],
-    {transform: 'translateX(-30px) rotate(20deg) translateY(10px)'},
+    [{transform: 'translateX(30px) scale(2) translateY(10px)'}],
+    {transform: 'translateX(-30px) scale(2) translateY(10px)'},
   ],
   [
     [{transform: 'translate3d(30%, 20%, 10%)'}],
     {transform: 'translate3d(-30%, 20%, 10%)'},
   ],
+  [[{transform: 'rotate(100deg)'}], {transform: 'rotate(-100deg)'}],
+  [[{transform: 'rotateZ(100deg)'}], {transform: 'rotateZ(-100deg)'}],
+  [[{transform: 'rotateY(100deg)'}], {transform: 'rotateY(-100deg)'}],
   [
     [{transform: 'perspective(500px) translate3d(30%, 20%, 10%)'}],
     {transform: 'perspective(500px) translate3d(-30%, 20%, 10%)'},
@@ -277,6 +280,7 @@ const shortTests = [
     {webkitTransform: 'translateX(-30px)'},
   ],
   [[{mozTransform: 'translateX(30px)'}], {mozTransform: 'translateX(-30px)'}],
+  [[{transformOrigin: '10% 50%'}], {transformOrigin: '90% 50%'}],
 ]
 
 // put short tests that should be skipped here
@@ -346,6 +350,9 @@ const unchanged = [
   [{transform: 'translateX(0px)'}],
   [{transform: 'translateY(30px)'}],
   [{transform: 'translateZ(30px)'}],
+  [{transform: 'rotateX(100deg)'}],
+  [{transformOrigin: '10px 100%'}],
+  [{transformOrigin: '50% 50%'}],
   [{content: 'left'}],
   [{content: 'right'}],
   [{foo: true}],
