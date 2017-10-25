@@ -130,6 +130,7 @@ function handleQuartetValues(value) {
 export {
   arrayToObject,
   calculateNewBackgroundPosition,
+  flipTransformSign as calculateNewTranslate,
   flipTransformSign,
   flipSign,
   handleQuartetValues,
