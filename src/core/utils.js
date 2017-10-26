@@ -57,7 +57,7 @@ function flipSign(value) {
   return `-${value}`
 }
 
-function calculateNewTranslate(match, prefix, offset, suffix) {
+function flipTransformSign(match, prefix, offset, suffix) {
   return prefix + flipSign(offset) + suffix
 }
 
@@ -130,7 +130,8 @@ function handleQuartetValues(value) {
 export {
   arrayToObject,
   calculateNewBackgroundPosition,
-  calculateNewTranslate,
+  flipTransformSign as calculateNewTranslate,
+  flipTransformSign,
   flipSign,
   handleQuartetValues,
   includes,

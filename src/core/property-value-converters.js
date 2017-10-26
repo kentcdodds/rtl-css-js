@@ -2,7 +2,7 @@ import {
   includes,
   isNumber,
   calculateNewBackgroundPosition,
-  calculateNewTranslate,
+  flipTransformSign,
   handleQuartetValues,
   getValuesAsList,
 } from './utils'
@@ -143,10 +143,15 @@ const propertyValueConverters = {
       `(translate3d\\s*\\(\\s*)${signedQuantPattern}((?:\\s*,\\s*${signedQuantPattern}){0,2}\\s*\\))`,
       'gi',
     )
+    const rotateRegExp = new RegExp(
+      `(rotate[ZY]?\\s*\\(\\s*)${signedQuantPattern}(\\s*\\))`,
+      'gi',
+    )
     return value
-      .replace(translateXRegExp, calculateNewTranslate)
-      .replace(translateRegExp, calculateNewTranslate)
-      .replace(translate3dRegExp, calculateNewTranslate)
+      .replace(translateXRegExp, flipTransformSign)
+      .replace(translateRegExp, flipTransformSign)
+      .replace(translate3dRegExp, flipTransformSign)
+      .replace(rotateRegExp, flipTransformSign)
   },
 }
 
@@ -158,21 +163,37 @@ propertyValueConverters.mozBoxShadow = propertyValueConverters.textShadow
 propertyValueConverters.borderStyle = propertyValueConverters.borderColor
 propertyValueConverters.webkitTransform = propertyValueConverters.transform
 propertyValueConverters.mozTransform = propertyValueConverters.transform
+propertyValueConverters.transformOrigin =
+  propertyValueConverters.backgroundPosition
+propertyValueConverters.webkitTransformOrigin =
+  propertyValueConverters.transformOrigin
+propertyValueConverters.mozTransformOrigin =
+  propertyValueConverters.transformOrigin
 
 // kebab-case versions
 
 propertyValueConverters['text-shadow'] = propertyValueConverters.textShadow
 propertyValueConverters['border-color'] = propertyValueConverters.borderColor
 propertyValueConverters['border-radius'] = propertyValueConverters.borderRadius
-propertyValueConverters['background-image'] = propertyValueConverters.backgroundImage
-propertyValueConverters['background-position'] = propertyValueConverters.backgroundPosition
-propertyValueConverters['background-position-x'] = propertyValueConverters.backgroundPositionX
+propertyValueConverters['background-image'] =
+  propertyValueConverters.backgroundImage
+propertyValueConverters['background-position'] =
+  propertyValueConverters.backgroundPosition
+propertyValueConverters['background-position-x'] =
+  propertyValueConverters.backgroundPositionX
 propertyValueConverters['border-width'] = propertyValueConverters.padding
 propertyValueConverters['box-shadow'] = propertyValueConverters.textShadow
-propertyValueConverters['-webkit-box-shadow'] = propertyValueConverters.textShadow
+propertyValueConverters['-webkit-box-shadow'] =
+  propertyValueConverters.textShadow
 propertyValueConverters['-moz-box-shadow'] = propertyValueConverters.textShadow
 propertyValueConverters['border-style'] = propertyValueConverters.borderColor
 propertyValueConverters['-webkit-transform'] = propertyValueConverters.transform
 propertyValueConverters['-moz-transform'] = propertyValueConverters.transform
+propertyValueConverters['transform-origin'] =
+  propertyValueConverters.transformOrigin
+propertyValueConverters['-webkit-transform-origin'] =
+  propertyValueConverters.transformOrigin
+propertyValueConverters['-moz-transform-origin'] =
+  propertyValueConverters.transformOrigin
 
 export default propertyValueConverters

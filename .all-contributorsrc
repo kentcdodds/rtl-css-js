@@ -69,6 +69,16 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "garrettberg",
+      "name": "garrettberg",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/844459?v=4",
+      "profile": "https://github.com/garrettberg",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ]
 }
