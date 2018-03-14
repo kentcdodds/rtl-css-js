@@ -109,7 +109,7 @@ function getPropertyDoppelganger(property) {
  * @return {String|Number|Object} the converted value
  */
 function getValueDoppelganger(key, originalValue) {
-  /* eslint complexity:[2, 8] */ // let's try to keep the complexity down... If we have to do this much more, let's break this up
+  /* eslint complexity:[2, 9] */ // let's try to keep the complexity down... If we have to do this much more, let's break this up
   if (isNullOrUndefined(originalValue) || isBoolean(originalValue)) {
     return originalValue
   }

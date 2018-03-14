@@ -103,6 +103,14 @@ const shortTests = [
     [{mozBoxShadow: '-1px 2px 3px 3px red'}],
     {mozBoxShadow: '1px 2px 3px 3px red'},
   ],
+  [
+    [{WebkitBoxShadow: '-1px 2px 3px 3px red'}],
+    {WebkitBoxShadow: '1px 2px 3px 3px red'},
+  ],
+  [
+    [{MozBoxShadow: '-1px 2px 3px 3px red'}],
+    {MozBoxShadow: '1px 2px 3px 3px red'},
+  ],
   [[{borderLeft: 0}], {borderRight: 0}],
   [[{borderLeft: '1px solid red'}], {borderRight: '1px solid red'}],
   [[{borderLeftColor: 'red'}], {borderRightColor: 'red'}],
@@ -280,7 +288,16 @@ const shortTests = [
     {webkitTransform: 'translateX(-30px)'},
   ],
   [[{mozTransform: 'translateX(30px)'}], {mozTransform: 'translateX(-30px)'}],
+  [
+    [{WebkitTransform: 'translateX(30px)'}],
+    {WebkitTransform: 'translateX(-30px)'},
+  ],
+  [[{MozTransform: 'translateX(30px)'}], {MozTransform: 'translateX(-30px)'}],
   [[{transformOrigin: '10% 50%'}], {transformOrigin: '90% 50%'}],
+  [[{webkitTransformOrigin: '10% 50%'}], {webkitTransformOrigin: '90% 50%'}],
+  [[{WebkitTransformOrigin: '10% 50%'}], {WebkitTransformOrigin: '90% 50%'}],
+  [[{mozTransformOrigin: '10% 50%'}], {mozTransformOrigin: '90% 50%'}],
+  [[{MozTransformOrigin: '10% 50%'}], {MozTransformOrigin: '90% 50%'}],
 ]
 
 // put short tests that should be skipped here
@@ -328,10 +345,17 @@ const unchanged = [
   [{leftxx: 10}],
   [{rightxx: 10}],
   [{backgroundImage: 'mozLinearGradient(#326cc1, #234e8c)'}],
+  [{backgroundImage: 'MozLinearGradient(#326cc1, #234e8c)'}],
   [
     {
       backgroundImage:
         'webkitGradient(linear, 100% 0%, 0% 0%, from(#666666), to(#ffffff))',
+    },
+  ],
+  [
+    {
+      backgroundImage:
+        'WebkitGradient(linear, 100% 0%, 0% 0%, from(#666666), to(#ffffff))',
     },
   ],
   [{background: '#000 url(/foo/bar.png) no-repeat 77% 40% /* @noflip */'}],
