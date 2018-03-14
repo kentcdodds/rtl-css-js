@@ -158,16 +158,24 @@ const propertyValueConverters = {
 propertyValueConverters.margin = propertyValueConverters.padding
 propertyValueConverters.borderWidth = propertyValueConverters.padding
 propertyValueConverters.boxShadow = propertyValueConverters.textShadow
-propertyValueConverters.webkitBoxShadow = propertyValueConverters.textShadow
-propertyValueConverters.mozBoxShadow = propertyValueConverters.textShadow
+propertyValueConverters.webkitBoxShadow = propertyValueConverters.boxShadow
+propertyValueConverters.mozBoxShadow = propertyValueConverters.boxShadow
+propertyValueConverters.WebkitBoxShadow = propertyValueConverters.boxShadow
+propertyValueConverters.MozBoxShadow = propertyValueConverters.boxShadow
 propertyValueConverters.borderStyle = propertyValueConverters.borderColor
 propertyValueConverters.webkitTransform = propertyValueConverters.transform
 propertyValueConverters.mozTransform = propertyValueConverters.transform
+propertyValueConverters.WebkitTransform = propertyValueConverters.transform
+propertyValueConverters.MozTransform = propertyValueConverters.transform
 propertyValueConverters.transformOrigin =
   propertyValueConverters.backgroundPosition
 propertyValueConverters.webkitTransformOrigin =
   propertyValueConverters.transformOrigin
 propertyValueConverters.mozTransformOrigin =
+  propertyValueConverters.transformOrigin
+propertyValueConverters.WebkitTransformOrigin =
+  propertyValueConverters.transformOrigin
+propertyValueConverters.MozTransformOrigin =
   propertyValueConverters.transformOrigin
 
 // kebab-case versions
