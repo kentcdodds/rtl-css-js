@@ -75,7 +75,7 @@ function convert(object) {
     const {key, value} = convertProperty(originalKey, originalValue)
     newObj[key] = value
     return newObj
-  }, {})
+  }, Array.isArray(object) ? [] : {})
 }
 
 /**
