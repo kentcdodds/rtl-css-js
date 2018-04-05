@@ -298,6 +298,10 @@ const shortTests = [
   [[{WebkitTransformOrigin: '10% 50%'}], {WebkitTransformOrigin: '90% 50%'}],
   [[{mozTransformOrigin: '10% 50%'}], {mozTransformOrigin: '90% 50%'}],
   [[{MozTransformOrigin: '10% 50%'}], {MozTransformOrigin: '90% 50%'}],
+  [
+    [{animationName: [{from: {transform: 'rotate(100deg)'}, to: {transform: 'rotate(-100deg)'}}]}],
+    {animationName: [{from: {transform: 'rotate(-100deg)'}, to: {transform: 'rotate(100deg)'}}]}
+  ],
 ]
 
 // put short tests that should be skipped here
@@ -313,6 +317,8 @@ const unchanged = [
   [{xUnknown: 'a b c d'}],
   [{xUnknown: '1px 2px 3px 4px'}],
   [{xUnknown: '1px 2px 3px 4px 5px'}],
+  [{xUnknown: {}}],
+  [{xUnknown: []}],
   [{padding: 1}],
   [{padding: '1px 2px'}],
   [{padding: '1px 2px 3px'}],
@@ -381,6 +387,7 @@ const unchanged = [
   [{content: 'right'}],
   [{foo: true}],
   [{foo: false}],
+  [{animationName: [{from: {opacity: 0}, to: {opacity: 1}}]}],
 ]
 
 shortTests.forEach(shortTest => {
