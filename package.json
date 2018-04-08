@@ -2,31 +2,43 @@
   "name": "rtl-css-js",
   "version": "0.0.0-semantically-released.0",
   "description": "Right To Left conversion for CSS in JS objects",
-  "main": "dist/rtl-css-js.cjs.js",
-  "jsnext:main": "dist/rtl-css-js.esm.js",
-  "module": "dist/rtl-css-js.esm.js",
+  "main": "dist/cjs/index.js",
+  "jsnext:main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
   "types": "types.d.ts",
   "scripts": {
     "add-contributor": "kcd-scripts contributors add",
-    "build": "rimraf dist && npm-run-all build:*",
-    "build:main":
-      "kcd-scripts build --bundle --environment BUILD_NAME:rtlCSSJS --no-clean",
-    "build:core":
-      "kcd-scripts build --bundle --environment BUILD_NAME:rtlCSSJSCore,BUILD_FILENAME_SUFFIX:\".core\",BUILD_INPUT:src/core/index.js --no-clean",
+    "build": "rimraf dist && npm-run-all build:**",
+    "build:bundlers":
+      "kcd-scripts build --bundle cjs,esm --environment BUILD_INPUT:src/*.js --no-clean",
+    "build:umd:main":
+      "kcd-scripts build --bundle umd,umd.min BUILD_NAME:rtlCSSJS --no-clean",
+    "build:umd:core":
+      "kcd-scripts build --bundle umd,umd.min --environment BUILD_NAME:rtlCSSJSCore,BUILD_FILENAME_SUFFIX:\".core\",BUILD_INPUT:src/core.js --no-clean",
+    "postbuild:bundlers": "node scripts/add-proxies-typings.js",
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
     "test:update": "npm run test -s -- --coverage --updateSnapshot",
     "validate": "kcd-scripts validate",
     "precommit": "kcd-scripts precommit"
   },
-  "files": ["dist", "types.d.ts", "core.js", "core.d.ts", "core.esm.js", "core.esm.d.ts"],
+  "files": [
+    "dist",
+    "core",
+    "types.d.ts",
+    "core.js",
+    "core.d.ts",
+    "core.esm.js",
+    "core.esm.d.ts"
+  ],
   "keywords": ["css-in-js", "ltr", "rtl", "cssjanus"],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "devDependencies": {
-    "kcd-scripts": "^0.16.0",
+    "kcd-scripts": "^0.38.0",
     "npm-run-all": "^4.1.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "tiny-glob": "^0.2.0"
   },
   "eslintConfig": {
     "extends": "./node_modules/kcd-scripts/eslint.js"

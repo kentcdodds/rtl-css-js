@@ -1,3 +1,8 @@
 /* eslint import/no-unresolved:0 */
-// this file just makes it easier to import dist/core
-export * from './dist/rtl-css-js.core.esm'
+if (process.env.NODE_ENV !== 'production') {
+  // eslint-disable-next-line no-console
+  console.warn(
+    'Importing `rtl-css-js/core.esm` is deprecated, please use `rtl-css-js/core`.',
+  )
+}
+export * from './dist/esm/core.js'
