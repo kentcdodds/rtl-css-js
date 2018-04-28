@@ -1,6 +1,7 @@
 node_modules
 coverage
 dist
+core/
 .opt-in
 .opt-out
 .DS_Store

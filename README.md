@@ -7,7 +7,7 @@ RTL conversion for CSS in JS objects
 [![Dependencies][dependencyci-badge]][dependencyci]
 [![version][version-badge]][package]
 [![downloads][downloads-badge]][npm-stat]
-[![MIT License][license-badge]][LICENSE]
+[![MIT License][license-badge]][license]
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs]
@@ -33,6 +33,26 @@ strings of CSS to do this, but none for CSS in JS where your CSS is represented 
 This is a function which accepts a CSS in JS object and can convert `padding-left` to `padding-right` as well as all
 other properties where it makes sense to do that (at least, that's what it's going to be when it's done... This is a
 work in progress).
+
+## Table of Contentss
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+* [Installation](#installation)
+* [Usage](#usage)
+  * [kebab-case](#kebab-case)
+  * [core](#core)
+* [Caveats](#caveats)
+  * [`background`](#background)
+* [Inspiration](#inspiration)
+* [Ecosystem](#ecosystem)
+* [Other Solutions](#other-solutions)
+* [Contributors](#contributors)
+* [LICENSE](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installation
 
@@ -90,7 +110,7 @@ console.log(styles) // logs {'padding-left': 23}
 with [certain scenarios](https://github.com/kentcdodds/rtl-css-js/pull/22)
 yourself. To use these you can use the `rtlCSSJSCore` global with the UMD build,
 `require('rtl-css-js/core')`, or use
-`import {propertyValueConverters, arrayToObject} from 'rtl-css-js/core.esm'`.
+`import {propertyValueConverters, arrayToObject} from 'rtl-css-js/core'`.
 
 You can import anything that's exported from `src/core`. Please see the code
 comments for documentation on how to use these.
@@ -101,7 +121,7 @@ comments for documentation on how to use these.
 
 Right now `background` and `backgroundImage` just replace all instances of `ltr` with `rtl` and `right` with `left`.
 This is so you can have a different image for your LTR and RTL, and in order to flip linear gradients. Note that
-this is case sensitive! Must be lower case. Note also that it *will not* change `bright` to `bleft`.
+this is case sensitive! Must be lower case. Note also that it _will not_ change `bright` to `bleft`.
 It's a _little_ smarter than that. But this is definitely something to consider with your URLs.
 
 ## Inspiration
@@ -123,8 +143,11 @@ I'm not aware of any, if you are please [make a pull request](http://makeapullre
 Thanks goes to these people ([emoji key][emojis]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore -->
 | [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=kentcdodds "Tests") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars.githubusercontent.com/u/63876?v=3" width="100px;"/><br /><sub>Ahmed El Gabri</sub>](https://gabri.me)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Code") [📖](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Documentation") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=ahmedelgabri "Tests") | [<img src="https://avatars1.githubusercontent.com/u/1383861?v=4" width="100px;"/><br /><sub>Maja Wichrowska</sub>](https://github.com/majapw)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=majapw "Tests") | [<img src="https://avatars2.githubusercontent.com/u/6600720?v=4" width="100px;"/><br /><sub>Yaniv</sub>](https://github.com/yzimet)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=yzimet "Tests") | [<img src="https://avatars2.githubusercontent.com/u/5658514?v=4" width="100px;"/><br /><sub>Jonathan Pollak</sub>](https://github.com/TxHawks)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=TxHawks "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=TxHawks "Tests") | [<img src="https://avatars1.githubusercontent.com/u/8528759?v=4" width="100px;"/><br /><sub>Ali Taheri Moghaddar</sub>](https://github.com/alitaheri)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=alitaheri "Code") [📖](https://github.com/kentcdodds/rtl-css-js/commits?author=alitaheri "Documentation") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=alitaheri "Tests") | [<img src="https://avatars0.githubusercontent.com/u/844459?v=4" width="100px;"/><br /><sub>garrettberg</sub>](https://github.com/garrettberg)<br />[💻](https://github.com/kentcdodds/rtl-css-js/commits?author=garrettberg "Code") [⚠️](https://github.com/kentcdodds/rtl-css-js/commits?author=garrettberg "Tests") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors][all-contributors] specification. Contributions of any kind welcome!

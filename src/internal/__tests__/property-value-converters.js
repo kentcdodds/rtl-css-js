@@ -3,7 +3,7 @@
  * implementation and therefore cannot be tested in the main test file.
  */
 
-import {propertyValueConverters} from '../'
+import propertyValueConverters from '../property-value-converters'
 
 describe('Extended core functionality', () => {
   describe('propertyValueConverters', () => {
