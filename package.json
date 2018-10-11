@@ -9,12 +9,9 @@
   "scripts": {
     "add-contributor": "kcd-scripts contributors add",
     "build": "rimraf dist && npm-run-all build:**",
-    "build:bundlers":
-      "kcd-scripts build --bundle cjs,esm --environment BUILD_INPUT:src/*.js --no-clean",
-    "build:umd:main":
-      "kcd-scripts build --bundle umd,umd.min BUILD_NAME:rtlCSSJS --no-clean",
-    "build:umd:core":
-      "kcd-scripts build --bundle umd,umd.min --environment BUILD_NAME:rtlCSSJSCore,BUILD_FILENAME_SUFFIX:\".core\",BUILD_INPUT:src/core.js --no-clean",
+    "build:bundlers": "kcd-scripts build --bundle cjs,esm --environment BUILD_INPUT:src/*.js --no-clean",
+    "build:umd:main": "kcd-scripts build --bundle umd,umd.min BUILD_NAME:rtlCSSJS --no-clean",
+    "build:umd:core": "kcd-scripts build --bundle umd,umd.min --environment BUILD_NAME:rtlCSSJSCore,BUILD_FILENAME_SUFFIX:\".core\",BUILD_INPUT:src/core.js --no-clean",
     "postbuild:bundlers": "node scripts/add-proxies-typings.js",
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
@@ -31,11 +28,16 @@
     "core.esm.js",
     "core.esm.d.ts"
   ],
-  "keywords": ["css-in-js", "ltr", "rtl", "cssjanus"],
+  "keywords": [
+    "css-in-js",
+    "ltr",
+    "rtl",
+    "cssjanus"
+  ],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "devDependencies": {
-    "kcd-scripts": "^0.38.0",
+    "kcd-scripts": "^0.45.0",
     "npm-run-all": "^4.1.1",
     "rimraf": "^2.6.2",
     "tiny-glob": "^0.2.0"
@@ -43,7 +45,11 @@
   "eslintConfig": {
     "extends": "./node_modules/kcd-scripts/eslint.js"
   },
-  "eslintIgnore": ["node_modules", "coverage", "dist"],
+  "eslintIgnore": [
+    "node_modules",
+    "coverage",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kentcdodds/rtl-css-js.git"
@@ -51,5 +57,8 @@
   "bugs": {
     "url": "https://github.com/kentcdodds/rtl-css-js/issues"
   },
-  "homepage": "https://github.com/kentcdodds/rtl-css-js#readme"
+  "homepage": "https://github.com/kentcdodds/rtl-css-js#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.1.2"
+  }
 }
