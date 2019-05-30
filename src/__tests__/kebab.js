@@ -187,7 +187,6 @@ const kebabTests = [
     [{'transition-property': 'margin-right'}],
     {'transition-property': 'margin-left'},
   ],
-  [[{'transition-property': 'display'}], {'transition-property': 'display'}],
   [
     [{'transition-property': 'padding-right, right'}],
     {'transition-property': 'padding-left, left'},
@@ -233,6 +232,7 @@ const unchangedKebab = [
     },
   ],
   [{padding: undefined, 'line-height': 0.2}],
+  [{'transition-property': 'display'}],
 ]
 
 const tests = {}
