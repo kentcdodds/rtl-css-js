@@ -79,6 +79,19 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "milesj",
+      "name": "Miles Johnson",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/143744?v=4",
+      "profile": "http://milesj.me",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
-  ]
+  ],
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "contributorsPerLine": 7
 }
