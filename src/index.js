@@ -59,23 +59,26 @@ const bgPosDirectionRegex = new RegExp('(left)|(right)')
  * @return {Object} the RTL converted object
  */
 function convert(object) {
-  return Object.keys(object).reduce((newObj, originalKey) => {
-    let originalValue = object[originalKey]
-    if (isString(originalValue)) {
-      // you're welcome to later code 😺
-      originalValue = originalValue.trim()
-    }
+  return Object.keys(object).reduce(
+    (newObj, originalKey) => {
+      let originalValue = object[originalKey]
+      if (isString(originalValue)) {
+        // you're welcome to later code 😺
+        originalValue = originalValue.trim()
+      }
 
-    // Some properties should never be transformed
-    if (includes(propsToIgnore, originalKey)) {
-      newObj[originalKey] = originalValue
+      // Some properties should never be transformed
+      if (includes(propsToIgnore, originalKey)) {
+        newObj[originalKey] = originalValue
+        return newObj
+      }
+
+      const {key, value} = convertProperty(originalKey, originalValue)
+      newObj[key] = value
       return newObj
-    }
-
-    const {key, value} = convertProperty(originalKey, originalValue)
-    newObj[key] = value
-    return newObj
-  }, Array.isArray(object) ? [] : {})
+    },
+    Array.isArray(object) ? [] : {},
+  )
 }
 
 /**
@@ -129,6 +132,7 @@ function getValueDoppelganger(key, originalValue) {
     newValue = valueConverter({
       value: importantlessValue,
       valuesToConvert,
+      propertiesToConvert,
       isRtl: true,
       bgImgDirectionRegex,
       bgPosDirectionRegex,
