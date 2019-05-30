@@ -324,15 +324,11 @@ const shortTests = [
     {transition: 'padding-right 4s ease-in-out'},
   ],
   [[{transition: 'all 0.5s ease-out'}], {transition: 'all 0.5s ease-out'}],
-  [[{transition: 'inherit'}], {transition: 'inherit'}],
-  [[{transition: 'initial'}], {transition: 'initial'}],
-  [[{transition: 'unset'}], {transition: 'unset'}],
   [
     [{transition: 'transform: 300ms, left 300ms'}],
     {transition: 'transform: 300ms, right 300ms'},
   ],
   [[{transitionProperty: 'margin-right'}], {transitionProperty: 'margin-left'}],
-  [[{transitionProperty: 'display'}], {transitionProperty: 'display'}],
   [
     [{transitionProperty: 'padding-right, right'}],
     {transitionProperty: 'padding-left, left'},
@@ -423,6 +419,10 @@ const unchanged = [
   [{foo: true}],
   [{foo: false}],
   [{animationName: [{from: {opacity: 0}, to: {opacity: 1}}]}],
+  [{transition: 'inherit'}],
+  [{transition: 'initial'}],
+  [{transition: 'unset'}],
+  [{transitionProperty: 'display'}],
 ]
 
 shortTests.forEach(shortTest => {
