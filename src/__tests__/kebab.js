@@ -4,7 +4,7 @@
 
 import convert from '../'
 
-// These are the same as the short tests only with kebab-casing 
+// These are the same as the short tests only with kebab-casing
 const kebabTests = [
   [[{'padding-left': 23}], {'padding-right': 23}],
   [[{'padding-right': 23}], {'padding-left': 23}],
@@ -24,13 +24,22 @@ const kebabTests = [
     [{'box-shadow': 'inset -6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
     {'box-shadow': 'inset 6px 3px 8px 5px rgba(0, 0, 0, 0.25)'},
   ],
-  [[{'box-shadow': 'inset .5em 0 0 white'}], {'box-shadow': 'inset -.5em 0 0 white'}],
+  [
+    [{'box-shadow': 'inset .5em 0 0 white'}],
+    {'box-shadow': 'inset -.5em 0 0 white'},
+  ],
   [
     [{'box-shadow': 'inset 0.5em 0 0 white'}],
     {'box-shadow': 'inset -0.5em 0 0 white'},
   ],
-  [[{'box-shadow': '-1px 2px 3px 3px red'}], {'box-shadow': '1px 2px 3px 3px red'}],
-  [[{'box-shadow': '-1px 2px 3px 3px red'}], {'box-shadow': '1px 2px 3px 3px red'}],
+  [
+    [{'box-shadow': '-1px 2px 3px 3px red'}],
+    {'box-shadow': '1px 2px 3px 3px red'},
+  ],
+  [
+    [{'box-shadow': '-1px 2px 3px 3px red'}],
+    {'box-shadow': '1px 2px 3px 3px red'},
+  ],
   [
     [{'-webkit-box-shadow': '-1px 2px 3px 3px red'}],
     {'-webkit-box-shadow': '1px 2px 3px 3px red'},
@@ -64,8 +73,14 @@ const kebabTests = [
   [[{'border-top-left-radius': 0}], {'border-top-right-radius': 0}],
   [[{'border-bottom-left-radius': 0}], {'border-bottom-right-radius': 0}],
   [[{'border-radius': '1px 2px'}], {'border-radius': '2px 1px'}],
-  [[{'border-radius': '1px 2px 3px 4px'}], {'border-radius': '2px 1px 4px 3px'}],
-  [[{'border-radius': '1px 2px 3px 4px'}], {'border-radius': '2px 1px 4px 3px'}],
+  [
+    [{'border-radius': '1px 2px 3px 4px'}],
+    {'border-radius': '2px 1px 4px 3px'},
+  ],
+  [
+    [{'border-radius': '1px 2px 3px 4px'}],
+    {'border-radius': '2px 1px 4px 3px'},
+  ],
   [[{'border-radius': '15px / 0 20px'}], {'border-radius': '15px / 20px 0'}],
   [
     [{'border-radius': '1px 2px 3px 4px / 5px 6px 7px 8px'}],
@@ -75,7 +90,10 @@ const kebabTests = [
     [{'border-radius': '1px 2px 3px 4px !important'}],
     {'border-radius': '2px 1px 4px 3px !important'},
   ],
-  [[{'border-radius': '1px 2px 3px 4px'}], {'border-radius': '2px 1px 4px 3px'}],
+  [
+    [{'border-radius': '1px 2px 3px 4px'}],
+    {'border-radius': '2px 1px 4px 3px'},
+  ],
   [
     [{'border-radius': '1px 2px 3px calc(calc(2*2) * 3px)'}],
     {'border-radius': '2px 1px calc(calc(2*2) * 3px) 3px'},
@@ -93,7 +111,12 @@ const kebabTests = [
     {'background-image': 'linear-gradient(to left top, blue, red)'},
   ],
   [
-    [{'background-image': 'linear-gradient(to left, #00ff00 0%, #ff0000 100%)'}],
+    [
+      {
+        'background-image':
+          'linear-gradient(to left, #00ff00 0%, #ff0000 100%)',
+      },
+    ],
     {'background-image': 'linear-gradient(to right, #00ff00 0%, #ff0000 100%)'},
   ],
   [
@@ -101,7 +124,12 @@ const kebabTests = [
     {'background-image': 'repeating-linear-gradient(to right top, blue, red)'},
   ],
   [
-    [{'background-image': 'repeating-linear-gradient(to right top, blue, red)'}],
+    [
+      {
+        'background-image':
+          'repeating-linear-gradient(to right top, blue, red)',
+      },
+    ],
     {'background-image': 'repeating-linear-gradient(to left top, blue, red)'},
   ],
   [
@@ -117,10 +145,16 @@ const kebabTests = [
     },
   ],
   [[{'background-position': 'left top'}], {'background-position': 'right top'}],
-  [[{'background-position': 'left -5px'}], {'background-position': 'right -5px'}],
+  [
+    [{'background-position': 'left -5px'}],
+    {'background-position': 'right -5px'},
+  ],
   [[{'background-position': '77% 40%'}], {'background-position': '23% 40%'}],
   [[{'background-position': '2.3% 40%'}], {'background-position': '97.7% 40%'}],
-  [[{'background-position': '2.3210% 40%'}], {'background-position': '97.6790% 40%'}],
+  [
+    [{'background-position': '2.3210% 40%'}],
+    {'background-position': '97.6790% 40%'},
+  ],
   [[{'background-position': '0% 100%'}], {'background-position': '100% 100%'}],
   [[{'background-position': '77% -5px'}], {'background-position': '23% -5px'}],
   [
@@ -145,7 +179,18 @@ const kebabTests = [
     [{'-webkit-transform': 'translateX(30px)'}],
     {'-webkit-transform': 'translateX(-30px)'},
   ],
-  [[{'-moz-transform': 'translateX(30px)'}], {'-moz-transform': 'translateX(-30px)'}],
+  [
+    [{'-moz-transform': 'translateX(30px)'}],
+    {'-moz-transform': 'translateX(-30px)'},
+  ],
+  [
+    [{'transition-property': 'margin-right'}],
+    {'transition-property': 'margin-left'},
+  ],
+  [
+    [{'transition-property': 'padding-right, right'}],
+    {'transition-property': 'padding-left, left'},
+  ],
 ]
 
 // Same as unchanged, except for kebab-casing
@@ -186,7 +231,8 @@ const unchangedKebab = [
         'red #f00 hsl(0, 100%, 50%) hsla(0, 100%, 50%, 0.5) /* @noflip */',
     },
   ],
-  [{'padding': undefined, 'line-height': 0.2}],
+  [{padding: undefined, 'line-height': 0.2}],
+  [{'transition-property': 'display'}],
 ]
 
 const tests = {}

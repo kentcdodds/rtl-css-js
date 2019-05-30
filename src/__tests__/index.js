@@ -299,8 +299,39 @@ const shortTests = [
   [[{mozTransformOrigin: '10% 50%'}], {mozTransformOrigin: '90% 50%'}],
   [[{MozTransformOrigin: '10% 50%'}], {MozTransformOrigin: '90% 50%'}],
   [
-    [{animationName: [{from: {transform: 'rotate(100deg)'}, to: {transform: 'rotate(-100deg)'}}]}],
-    {animationName: [{from: {transform: 'rotate(-100deg)'}, to: {transform: 'rotate(100deg)'}}]}
+    [
+      {
+        animationName: [
+          {
+            from: {transform: 'rotate(100deg)'},
+            to: {transform: 'rotate(-100deg)'},
+          },
+        ],
+      },
+    ],
+    {
+      animationName: [
+        {
+          from: {transform: 'rotate(-100deg)'},
+          to: {transform: 'rotate(100deg)'},
+        },
+      ],
+    },
+  ],
+  [[{transition: 'margin-right 4s'}], {transition: 'margin-left 4s'}],
+  [
+    [{transition: 'padding-left 4s ease-in-out'}],
+    {transition: 'padding-right 4s ease-in-out'},
+  ],
+  [[{transition: 'all 0.5s ease-out'}], {transition: 'all 0.5s ease-out'}],
+  [
+    [{transition: 'transform: 300ms, left 300ms'}],
+    {transition: 'transform: 300ms, right 300ms'},
+  ],
+  [[{transitionProperty: 'margin-right'}], {transitionProperty: 'margin-left'}],
+  [
+    [{transitionProperty: 'padding-right, right'}],
+    {transitionProperty: 'padding-left, left'},
   ],
 ]
 
@@ -388,6 +419,10 @@ const unchanged = [
   [{foo: true}],
   [{foo: false}],
   [{animationName: [{from: {opacity: 0}, to: {opacity: 1}}]}],
+  [{transition: 'inherit'}],
+  [{transition: 'initial'}],
+  [{transition: 'unset'}],
+  [{transitionProperty: 'display'}],
 ]
 
 shortTests.forEach(shortTest => {

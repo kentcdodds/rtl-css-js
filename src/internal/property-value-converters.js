@@ -118,6 +118,25 @@ const propertyValueConverters = {
       bgPosDirectionRegex,
     })
   },
+  transition({value, propertiesToConvert}) {
+    return value
+      .split(/,\s*/g)
+      .map(transition => {
+        const values = transition.split(' ')
+
+        // Property is always defined first
+        values[0] = propertiesToConvert[values[0]] || values[0]
+
+        return values.join(' ')
+      })
+      .join(', ')
+  },
+  transitionProperty({value, propertiesToConvert}) {
+    return value
+      .split(/,\s*/g)
+      .map(prop => propertiesToConvert[prop] || prop)
+      .join(', ')
+  },
   transform({value}) {
     // This was copied and modified from CSSJanus:
     // https://github.com/cssjanus/cssjanus/blob/4a40f001b1ba35567112d8b8e1d9d95eda4234c3/src/cssjanus.js#L152-L153
@@ -177,6 +196,18 @@ propertyValueConverters.WebkitTransformOrigin =
   propertyValueConverters.transformOrigin
 propertyValueConverters.MozTransformOrigin =
   propertyValueConverters.transformOrigin
+propertyValueConverters.webkitTransition = propertyValueConverters.transition
+propertyValueConverters.mozTransition = propertyValueConverters.transition
+propertyValueConverters.WebkitTransition = propertyValueConverters.transition
+propertyValueConverters.MozTransition = propertyValueConverters.transition
+propertyValueConverters.webkitTransitionProperty =
+  propertyValueConverters.transitionProperty
+propertyValueConverters.mozTransitionProperty =
+  propertyValueConverters.transitionProperty
+propertyValueConverters.WebkitTransitionProperty =
+  propertyValueConverters.transitionProperty
+propertyValueConverters.MozTransitionProperty =
+  propertyValueConverters.transitionProperty
 
 // kebab-case versions
 
@@ -203,5 +234,14 @@ propertyValueConverters['-webkit-transform-origin'] =
   propertyValueConverters.transformOrigin
 propertyValueConverters['-moz-transform-origin'] =
   propertyValueConverters.transformOrigin
+propertyValueConverters['-webkit-transition'] =
+  propertyValueConverters.transition
+propertyValueConverters['-moz-transition'] = propertyValueConverters.transition
+propertyValueConverters['transition-property'] =
+  propertyValueConverters.transitionProperty
+propertyValueConverters['-webkit-transition-property'] =
+  propertyValueConverters.transitionProperty
+propertyValueConverters['-moz-transition-property'] =
+  propertyValueConverters.transitionProperty
 
 export default propertyValueConverters
