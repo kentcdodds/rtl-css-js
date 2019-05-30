@@ -87,7 +87,7 @@ function convert(object) {
  * @param {Number|String|Object} originalValue the original css property value
  * @return {Object} the new {key, value} pair
  */
-function convertProperty(originalKey, originalValue) {
+export function convertProperty(originalKey, originalValue) {
   const isNoFlip = /\/\*\s?@noflip\s?\*\//.test(originalValue)
   const key = isNoFlip ? originalKey : getPropertyDoppelganger(originalKey)
   const value = isNoFlip
