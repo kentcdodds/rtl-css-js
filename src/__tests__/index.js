@@ -12,7 +12,7 @@
  * incorrect.
  */
 
-import convert from '../'
+import {convert} from '../core'
 
 // use this object for bigger tests
 // the key is the test title
