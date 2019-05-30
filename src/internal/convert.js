@@ -132,6 +132,7 @@ export function getValueDoppelganger(key, originalValue) {
     newValue = valueConverter({
       value: importantlessValue,
       valuesToConvert,
+      propertiesToConvert,
       isRtl: true,
       bgImgDirectionRegex,
       bgPosDirectionRegex,
