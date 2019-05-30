@@ -122,15 +122,37 @@ export declare const valuesToConvert: {[key: string]: string}
 
 export declare const propsToIgnore: string[]
 
+/**
+ * converts properties and values in the CSS in JS object to their corresponding RTL values
+ * @param {Object} object the CSS in JS object
+ * @return {Object} the RTL converted object
+ */
 export declare function convert<T extends object = object>(o: T): T
 
+/**
+ * Converts a property and its value to the corresponding RTL key and value
+ * @param {String} originalKey the original property key
+ * @param {Number|String|Object} originalValue the original css property value
+ * @return {Object} the new {key, value} pair
+ */
 export declare function convertProperty<V extends PropertyValue>(
   originalKey: string,
   originalValue: V,
 ): {key: string; value: V}
 
+/**
+ * This gets the RTL version of the given property if it has a corresponding RTL property
+ * @param {String} property the name of the property
+ * @return {String} the name of the RTL property
+ */
 export declare function getPropertyDoppelganger(property: string): string
 
+/**
+ * This converts the given value to the RTL version of that value based on the key
+ * @param {String} key this is the key (note: this should be the RTL version of the originalKey)
+ * @param {String|Number|Object} originalValue the original css property value. If it's an object, then we'll convert that as well
+ * @return {String|Number|Object} the converted value
+ */
 export declare function getValueDoppelganger<V extends PropertyValue>(
   key: string,
   originalValue: V,
