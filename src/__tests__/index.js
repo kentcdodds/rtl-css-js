@@ -332,6 +332,7 @@ const shortTests = [
     {transition: 'transform: 300ms, right 300ms'},
   ],
   [[{transitionProperty: 'margin-right'}], {transitionProperty: 'margin-left'}],
+  [[{transitionProperty: 'display'}], {transitionProperty: 'display'}],
   [
     [{transitionProperty: 'padding-right, right'}],
     {transitionProperty: 'padding-left, left'},

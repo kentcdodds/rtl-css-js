@@ -237,6 +237,8 @@ propertyValueConverters['-moz-transform-origin'] =
 propertyValueConverters['-webkit-transition'] =
   propertyValueConverters.transition
 propertyValueConverters['-moz-transition'] = propertyValueConverters.transition
+propertyValueConverters['transition-property'] =
+  propertyValueConverters.transitionProperty
 propertyValueConverters['-webkit-transition-property'] =
   propertyValueConverters.transitionProperty
 propertyValueConverters['-moz-transition-property'] =
