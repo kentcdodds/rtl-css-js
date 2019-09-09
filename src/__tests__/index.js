@@ -423,6 +423,7 @@ const unchanged = [
   [{transition: 'initial'}],
   [{transition: 'unset'}],
   [{transitionProperty: 'display'}],
+  [{opacity: () => {}}],
 ]
 
 shortTests.forEach(shortTest => {
