@@ -89,6 +89,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "kevinweber",
+      "name": "Kevin Weber",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2785791?v=4",
+      "profile": "https://www.kweber.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",

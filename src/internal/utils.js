@@ -15,6 +15,10 @@ function isBoolean(val) {
   return typeof val === 'boolean'
 }
 
+function isFunction(val) {
+  return typeof val === 'function'
+}
+
 function isNumber(val) {
   return typeof val === 'number'
 }
@@ -136,6 +140,7 @@ export {
   handleQuartetValues,
   includes,
   isBoolean,
+  isFunction,
   isNullOrUndefined,
   isNumber,
   isObject,
