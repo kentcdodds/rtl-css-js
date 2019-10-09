@@ -1,3 +1,9 @@
+<p align="center">
+<a href="https://codefund.io/properties/511/visit-sponsor">
+<img src="https://codefund.io/properties/511/sponsor" />
+</a>
+</p>
+
 # rtl-css-js
 
 RTL conversion for CSS in JS objects
