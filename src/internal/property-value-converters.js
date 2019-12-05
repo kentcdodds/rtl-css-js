@@ -174,6 +174,7 @@ const propertyValueConverters = {
   },
 }
 
+propertyValueConverters.objectPosition = propertyValueConverters.backgroundPosition;
 propertyValueConverters.margin = propertyValueConverters.padding
 propertyValueConverters.borderWidth = propertyValueConverters.padding
 propertyValueConverters.boxShadow = propertyValueConverters.textShadow
@@ -220,6 +221,8 @@ propertyValueConverters['background-position'] =
   propertyValueConverters.backgroundPosition
 propertyValueConverters['background-position-x'] =
   propertyValueConverters.backgroundPositionX
+propertyValueConverters['object-position'] =
+  propertyValueConverters.objectPosition
 propertyValueConverters['border-width'] = propertyValueConverters.padding
 propertyValueConverters['box-shadow'] = propertyValueConverters.textShadow
 propertyValueConverters['-webkit-box-shadow'] =
