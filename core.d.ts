@@ -42,6 +42,7 @@ export declare interface PropertyValueConverters {
   backgroundPositionX: PropertyValueConverter<
     BackgroundPositionConverterOptions
   >
+  objectPosition: PropertyValueConverter<BackgroundPositionConverterOptions>
   transform: PropertyValueConverter
   margin: PropertyValueConverter
   borderWidth: PropertyValueConverter
@@ -59,6 +60,9 @@ export declare interface PropertyValueConverters {
     BackgroundPositionConverterOptions
   >
   'background-position-x': PropertyValueConverter<
+    BackgroundPositionConverterOptions
+  >
+  'object-position': PropertyValueConverter<
     BackgroundPositionConverterOptions
   >
   'border-width': PropertyValueConverter

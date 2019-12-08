@@ -333,6 +333,9 @@ const shortTests = [
     [{transitionProperty: 'padding-right, right'}],
     {transitionProperty: 'padding-left, left'},
   ],
+  [[{objectPosition: 'left top'}], {objectPosition: 'right top'}],
+  [[{objectPosition: '10%'}], {objectPosition: '90%'}],
+  [[{objectPosition: '2.3% 40%'}], {objectPosition: '97.7% 40%'}],
 ]
 
 // put short tests that should be skipped here
@@ -424,6 +427,8 @@ const unchanged = [
   [{transition: 'unset'}],
   [{transitionProperty: 'display'}],
   [{opacity: () => {}}],
+  [{objectPosition: 'center bottom'}],
+  [{objectPosition: '5px 10px'}], // There's no RTL-flipped equivalent for the 5px. :-(
 ]
 
 shortTests.forEach(shortTest => {
