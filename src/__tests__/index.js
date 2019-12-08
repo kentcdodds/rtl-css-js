@@ -461,6 +461,7 @@ Object.keys(tests)
     if (modifier && modifier !== 'balrog') {
       test[modifier](title, testFn)
     } else {
+      // eslint-disable-next-line jest/valid-title
       test(title, testFn)
     }
 
