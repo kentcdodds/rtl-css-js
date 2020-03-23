@@ -62,9 +62,7 @@ export declare interface PropertyValueConverters {
   'background-position-x': PropertyValueConverter<
     BackgroundPositionConverterOptions
   >
-  'object-position': PropertyValueConverter<
-    BackgroundPositionConverterOptions
-  >
+  'object-position': PropertyValueConverter<BackgroundPositionConverterOptions>
   'border-width': PropertyValueConverter
   'box-shadow': PropertyValueConverter
   '-webkit-box-shadow': PropertyValueConverter

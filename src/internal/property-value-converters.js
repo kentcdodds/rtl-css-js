@@ -174,7 +174,8 @@ const propertyValueConverters = {
   },
 }
 
-propertyValueConverters.objectPosition = propertyValueConverters.backgroundPosition;
+propertyValueConverters.objectPosition =
+  propertyValueConverters.backgroundPosition
 propertyValueConverters.margin = propertyValueConverters.padding
 propertyValueConverters.borderWidth = propertyValueConverters.padding
 propertyValueConverters.boxShadow = propertyValueConverters.textShadow
