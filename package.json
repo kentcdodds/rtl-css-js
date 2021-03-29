@@ -26,7 +26,6 @@
     "dist",
     "core",
     "types.d.ts",
-    "core.js",
     "core.d.ts",
     "core.esm.js",
     "core.esm.d.ts"
