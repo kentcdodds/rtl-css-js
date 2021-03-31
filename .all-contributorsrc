@@ -118,9 +118,19 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "layershifter",
+      "name": "Oleksandr Fediashov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14183168?v=4",
+      "profile": "https://twitter.com/layershifter",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
   "repoHost": "https://github.com",
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
