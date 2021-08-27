@@ -380,6 +380,8 @@ const unchanged = [
   [{background: 'url("http'}],
   [{background: "url('http"}],
   [{background: "url('http"}],
+  [{background: 0}],
+  [{background: '0'}],
   [{xxLeft: 10}],
   [{xxRight: 10}],
   [{leftxx: 10}],
