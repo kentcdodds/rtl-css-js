@@ -5,4 +5,5 @@ if (process.env.NODE_ENV !== 'production') {
     'Importing `rtl-css-js/core.esm` is deprecated, please use `rtl-css-js/core`.',
   )
 }
+// eslint-disable-next-line import/extensions
 export * from './dist/esm/core.js'

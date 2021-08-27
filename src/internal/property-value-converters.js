@@ -63,6 +63,10 @@ const propertyValueConverters = {
     bgImgDirectionRegex,
     bgPosDirectionRegex,
   }) {
+    if (isNumber(value)) {
+      return value
+    }
+
     // Yeah, this is in need of a refactor 🙃...
     // but this property is a tough cookie 🍪
     // get the backgroundPosition out of the string by removing everything that couldn't be the backgroundPosition value
@@ -174,7 +178,8 @@ const propertyValueConverters = {
   },
 }
 
-propertyValueConverters.objectPosition = propertyValueConverters.backgroundPosition;
+propertyValueConverters.objectPosition =
+  propertyValueConverters.backgroundPosition
 propertyValueConverters.margin = propertyValueConverters.padding
 propertyValueConverters.borderWidth = propertyValueConverters.padding
 propertyValueConverters.boxShadow = propertyValueConverters.textShadow
