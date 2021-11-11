@@ -431,6 +431,11 @@ const unchanged = [
   [{opacity: () => {}}],
   [{objectPosition: 'center bottom'}],
   [{objectPosition: '5px 10px'}], // There's no RTL-flipped equivalent for the 5px. :-(
+  [{boxShadow: 'var(--box-shadow)'}],
+  [{margin: 'var(--margin)'}],
+  [{transform: 'translate(var(--distance))'}],
+  [{transform: 'var(--transform)'}],
+  [{transform: 'translateX(var(--distance))'}],
 ]
 
 shortTests.forEach(shortTest => {

@@ -11,6 +11,10 @@ function arrayToObject(array) {
   }, {})
 }
 
+function containsCssVar(val) {
+  return typeof val === 'string' && val.match(/var\(.*\)/g)
+}
+
 function isBoolean(val) {
   return typeof val === 'boolean'
 }
@@ -131,18 +135,31 @@ function handleQuartetValues(value) {
   return [top, left, bottom, right].join(' ')
 }
 
+/**
+ *
+ * @param {String|Number|Object} value css property value to test
+ * @returns If the css property value can(should?) have an RTL equivalent
+ */
+function canConvertValue(value) {
+  return (
+    !isBoolean(value) && !isNullOrUndefined(value) && !containsCssVar(value)
+  )
+}
+
 export {
   arrayToObject,
   calculateNewBackgroundPosition,
+  canConvertValue,
   flipTransformSign as calculateNewTranslate,
   flipTransformSign,
   flipSign,
   handleQuartetValues,
   includes,
   isBoolean,
+  containsCssVar,
   isFunction,
-  isNullOrUndefined,
   isNumber,
+  isNullOrUndefined,
   isObject,
   isString,
   getValuesAsList,
