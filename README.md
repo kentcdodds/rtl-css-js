@@ -39,6 +39,7 @@ is a work in progress).
   - [core](#core)
 - [Caveats](#caveats)
   - [`background`](#background)
+  - [CSS variables - `var()`](#css-variables---var)
 - [Inspiration](#inspiration)
 - [Ecosystem](#ecosystem)
 - [Other Solutions](#other-solutions)
@@ -120,6 +121,12 @@ for your LTR and RTL, and in order to flip linear gradients. Note that this is
 case sensitive! Must be lower case. Note also that it _will not_ change `bright`
 to `bleft`. It's a _little_ smarter than that. But this is definitely something
 to consider with your URLs.
+
+### CSS variables - `var()`
+
+Since it's impossible to know what the contents of a css variable are until the
+styles are actually calculated by the browser, any property value that includes
+css variables with `var()` will not be converted.
 
 ## Inspiration
 

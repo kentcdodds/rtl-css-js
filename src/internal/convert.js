@@ -1,12 +1,11 @@
 import {
   includes,
   arrayToObject,
-  isBoolean,
   isFunction,
   isNumber,
   isObject,
   isString,
-  isNullOrUndefined,
+  canConvertValue,
 } from './utils'
 import propertyValueConverters from './property-value-converters'
 
@@ -113,8 +112,7 @@ export function getPropertyDoppelganger(property) {
  * @return {String|Number|Object} the converted value
  */
 export function getValueDoppelganger(key, originalValue) {
-  /* eslint complexity:[2, 10] */ // let's try to keep the complexity down... If we have to do this much more, let's break this up
-  if (isNullOrUndefined(originalValue) || isBoolean(originalValue)) {
+  if (!canConvertValue(originalValue)) {
     return originalValue
   }
 
