@@ -162,10 +162,10 @@ function splitShadow(value) {
       shadows.push(value.substring(start, end).trim())
       end++
       start = end
-    } else if (value[end] == `(`) {
+    } else if (value[end] === `(`) {
       rgba = true
       end++
-    } else if (value[end] == ')') {
+    } else if (value[end] === ')') {
       rgba = false
       end++
     } else {
