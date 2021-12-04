@@ -174,6 +174,7 @@ function splitShadow(value) {
   }
 
   // push the last shadow value if there is one
+  // instanbul ignore next
   if (start != end) {
     shadows.push(value.substring(start, end + 1))
   }
