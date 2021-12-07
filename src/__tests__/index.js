@@ -96,6 +96,38 @@ const shortTests = [
   [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
   [[{boxShadow: '-1px 2px 3px 3px red'}], {boxShadow: '1px 2px 3px 3px red'}],
   [
+    [{boxShadow: '-1px 2px 3px 3px red, -1px 2px 3px 3px red'}],
+    {boxShadow: '1px 2px 3px 3px red, 1px 2px 3px 3px red'},
+  ],
+  [
+    [
+      {
+        boxShadow:
+          '-1px 2px 3px 3px rgba(0, 0, 0, 0.5), -1px 2px 3px 3px rgba(0, 0, 0, 0.5)',
+      },
+    ],
+    {
+      boxShadow:
+        '1px 2px 3px 3px rgba(0, 0, 0, 0.5), 1px 2px 3px 3px rgba(0, 0, 0, 0.5)',
+    },
+  ],
+  [
+    [{boxShadow: '-1px 2px rgba(0, 0, 0, 0.5), -1px 2px rgba(0, 0, 0, 0.5)'}],
+    {boxShadow: '1px 2px rgba(0, 0, 0, 0.5), 1px 2px rgba(0, 0, 0, 0.5)'},
+  ],
+  [
+    [{boxShadow: '-1px 2px red, -1px 2px red'}],
+    {boxShadow: '1px 2px red, 1px 2px red'},
+  ],
+  [
+    [{boxShadow: 'inset -1px 2px red, -1px 2px red'}],
+    {boxShadow: 'inset 1px 2px red, 1px 2px red'},
+  ],
+  [
+    [{boxShadow: 'inset -1px 2px 3px 3px red, -1px 2px 3px 3px red'}],
+    {boxShadow: 'inset 1px 2px 3px 3px red, 1px 2px 3px 3px red'},
+  ],
+  [
     [{webkitBoxShadow: '-1px 2px 3px 3px red'}],
     {webkitBoxShadow: '1px 2px 3px 3px red'},
   ],

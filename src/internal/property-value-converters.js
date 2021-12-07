@@ -5,6 +5,7 @@ import {
   flipTransformSign,
   handleQuartetValues,
   getValuesAsList,
+  splitShadow,
 } from './utils'
 
 // some values require a little fudging, that fudging goes here.
@@ -16,14 +17,18 @@ const propertyValueConverters = {
     return handleQuartetValues(value)
   },
   textShadow({value}) {
-    // intentionally leaving off the `g` flag here because we only want to change the first number (which is the offset-x)
-    return value.replace(/(-*)([.|\d]+)/, (match, negative, number) => {
-      if (number === '0') {
-        return match
-      }
-      const doubleNegative = negative === '' ? '-' : ''
-      return `${doubleNegative}${number}`
+    const flippedShadows = splitShadow(value).map(shadow => {
+      // intentionally leaving off the `g` flag here because we only want to change the first number (which is the offset-x)
+      return shadow.replace(/(-*)([.|\d]+)/, (match, negative, number) => {
+        if (number === '0') {
+          return match
+        }
+        const doubleNegative = negative === '' ? '-' : ''
+        return `${doubleNegative}${number}`
+      })
     })
+
+    return flippedShadows.join(',')
   },
   borderColor({value}) {
     return handleQuartetValues(value)

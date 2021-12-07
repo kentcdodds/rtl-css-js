@@ -146,6 +146,42 @@ function canConvertValue(value) {
   )
 }
 
+/**
+ * Splits a shadow style into its separate shadows using the comma delimiter, but creating an exception
+ * for comma separated values in parentheses often used for rgba colours.
+ * @param {String} value
+ * @returns {Array} array of all box shadow values in the string
+ */
+function splitShadow(value) {
+  const shadows = []
+  let start = 0
+  let end = 0
+  let rgba = false
+  while (end < value.length) {
+    if (!rgba && value[end] === ',') {
+      shadows.push(value.substring(start, end).trim())
+      end++
+      start = end
+    } else if (value[end] === `(`) {
+      rgba = true
+      end++
+    } else if (value[end] === ')') {
+      rgba = false
+      end++
+    } else {
+      end++
+    }
+  }
+
+  // push the last shadow value if there is one
+  // istanbul ignore next
+  if (start != end) {
+    shadows.push(value.substring(start, end + 1))
+  }
+
+  return shadows
+}
+
 export {
   arrayToObject,
   calculateNewBackgroundPosition,
@@ -163,4 +199,5 @@ export {
   isObject,
   isString,
   getValuesAsList,
+  splitShadow,
 }
