@@ -41,6 +41,7 @@ const shortTests = [
   [[{left: '10px !important'}], {right: '10px !important'}],
   [[{right: '-1.5em'}], {left: '-1.5em'}],
   [[{left: '-.75em'}], {right: '-.75em'}],
+  [[{left: 'var(--css-variable)'}], {right: 'var(--css-variable)'}],
   [[{padding: '1px 2px 3px -4px'}], {padding: '1px -4px 3px 2px'}],
   [[{padding: '.25em 0ex 0pt 15px'}], {padding: '.25em 15px 0pt 0ex'}],
   [[{padding: '1px 2% 3px 4.1grad'}], {padding: '1px 4.1grad 3px 2%'}],
@@ -67,6 +68,10 @@ const shortTests = [
   ],
   [[{padding: 10, direction: 'rtl'}], {padding: 10, direction: 'ltr'}],
   [[{margin: '1px 2px 3px 4px'}], {margin: '1px 4px 3px 2px'}],
+  [
+    [{margin: '1px var(--token) 3px 4px'}],
+    {margin: '1px 4px 3px var(--token)'},
+  ],
   [[{float: 'left'}], {float: 'right'}],
   [[{float: 'left !important'}], {float: 'right !important'}],
   [[{clear: 'left'}], {clear: 'right'}],
@@ -85,6 +90,10 @@ const shortTests = [
     {boxShadow: '6px 3px 8px 5px rgba(0, 0, 0, 0.25)'},
   ],
   [
+    [{boxShadow: '-6px 3px 8px 5px var(--css-variable)'}],
+    {boxShadow: '6px 3px 8px 5px var(--css-variable)'},
+  ],
+  [
     [{boxShadow: 'inset -6px 3px 8px 5px rgba(0, 0, 0, 0.25)'}],
     {boxShadow: 'inset 6px 3px 8px 5px rgba(0, 0, 0, 0.25)'},
   ],
@@ -98,6 +107,18 @@ const shortTests = [
   [
     [{boxShadow: '-1px 2px 3px 3px red, -1px 2px 3px 3px red'}],
     {boxShadow: '1px 2px 3px 3px red, 1px 2px 3px 3px red'},
+  ],
+  [
+    [
+      {
+        boxShadow:
+          '-1px 2px 3px 3px var(--css-variable), -1px 2px 3px 3px var(--anotherVariable)',
+      },
+    ],
+    {
+      boxShadow:
+        '1px 2px 3px 3px var(--css-variable), 1px 2px 3px 3px var(--anotherVariable)',
+    },
   ],
   [
     [
@@ -464,6 +485,7 @@ const unchanged = [
   [{objectPosition: 'center bottom'}],
   [{objectPosition: '5px 10px'}], // There's no RTL-flipped equivalent for the 5px. :-(
   [{boxShadow: 'var(--shadow16)'}],
+  [{boxShadow: 'var(--shadow-16)'}],
   [{margin: 'var(--margin)'}],
   [{transform: 'translate(var(--distance))'}],
   [{transform: 'var(--transform)'}],

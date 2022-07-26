@@ -19,13 +19,16 @@ const propertyValueConverters = {
   textShadow({value}) {
     const flippedShadows = splitShadow(value).map(shadow => {
       // intentionally leaving off the `g` flag here because we only want to change the first number (which is the offset-x)
-      return shadow.replace(/(-*)([.|\d]+)/, (match, negative, number) => {
-        if (number === '0') {
-          return match
-        }
-        const doubleNegative = negative === '' ? '-' : ''
-        return `${doubleNegative}${number}`
-      })
+      return shadow.replace(
+        /(^|\s)(-*)([.|\d]+)/,
+        (match, whiteSpace, negative, number) => {
+          if (number === '0') {
+            return match
+          }
+          const doubleNegative = negative === '' ? '-' : ''
+          return `${whiteSpace}${doubleNegative}${number}`
+        },
+      )
     })
 
     return flippedShadows.join(',')
