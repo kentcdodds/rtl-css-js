@@ -137,6 +137,17 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "miroslavstastny",
+      "name": "Miroslav Stastny",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9615899?v=4",
+      "profile": "https://github.com/miroslavstastny",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ],
   "repoType": "github",
