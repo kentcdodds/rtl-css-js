@@ -11,10 +11,6 @@ function arrayToObject(array) {
   }, {})
 }
 
-function containsCssVar(val) {
-  return typeof val === 'string' && val.match(/var\(.*\)/g)
-}
-
 function isBoolean(val) {
   return typeof val === 'boolean'
 }
@@ -141,9 +137,7 @@ function handleQuartetValues(value) {
  * @returns If the css property value can(should?) have an RTL equivalent
  */
 function canConvertValue(value) {
-  return (
-    !isBoolean(value) && !isNullOrUndefined(value) && !containsCssVar(value)
-  )
+  return !isBoolean(value) && !isNullOrUndefined(value)
 }
 
 /**
@@ -192,7 +186,6 @@ export {
   handleQuartetValues,
   includes,
   isBoolean,
-  containsCssVar,
   isFunction,
   isNumber,
   isNullOrUndefined,

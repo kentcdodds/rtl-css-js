@@ -117,7 +117,7 @@ export function getValueDoppelganger(key, originalValue) {
   }
 
   if (isObject(originalValue)) {
-    return convert(originalValue) // recurssion 🌀
+    return convert(originalValue) // recursion 🌀
   }
   const isNum = isNumber(originalValue)
   const isFunc = isFunction(originalValue)

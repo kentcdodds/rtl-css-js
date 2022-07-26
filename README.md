@@ -125,8 +125,8 @@ to consider with your URLs.
 ### CSS variables - `var()`
 
 Since it's impossible to know what the contents of a css variable are until the
-styles are actually calculated by the browser, any property value that includes
-css variables with `var()` will not be converted.
+styles are actually calculated by the browser, any CSS variable contents will
+not be converted.
 
 ## Inspiration
 
